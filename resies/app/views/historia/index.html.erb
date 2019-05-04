@@ -1,0 +1,133 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<%= wicked_pdf_stylesheet_link_tag "//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" %>
+<%= wicked_pdf_javascript_include_tag "//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"%>
+<%= wicked_pdf_javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"%>
+<!------ Include the above in your HEAD tag ---------->
+<%= stylesheet_link_tag "formulariomostrar.css" %>
+<%= wicked_pdf_stylesheet_link_tag "formulariomostrar.css" %>
+<%= javascript_include_tag "http://www.google.com/jsapi" %>
+<div class="container" style=" font-family: monospace; margin-top: 60px;">
+    <div class="row">
+        <div class="col-12">
+            <div class="card" style="background-color: #fff">
+                    <div class="row pb-5 p-5" style="font-size: 12pt">
+                        <div class="col-md-12">
+
+                            <%= wicked_pdf_image_tag image_url('/assets/red.jpg'), height: '120', width: '320'  %>
+                          </br>
+                          </br>
+                          <div class="col-md-11 text-center" >
+                              <p class="font-weight-bold mb-1" style="font-size: 18pt; font-family: monospace;"> RESIES "REPORTE Y EVALUACION DE LA SUSTENTABILIDAD DE INSTITUCIONES DE EDUCACION SUPERIOR"</p>
+                          </div>
+                        </div>
+                    </div>
+             </div>
+             <div class="card" >
+                  <div class="row pb-5 p-5" style="font-size: 12pt">
+
+                  <div class="col-md-12">
+                  </br><p class="font-weight-bold mb-1" style="font-size: 25pt; font-family: monospace;">Resultado Global</p></br>
+                      <div class="col-md-12">
+                        <div class="col-md-12 text-center">
+                        </br></br>
+                          <table class="table text-center" style="font-size: 10pt; align: center">
+                            <%= line_chart Historium.where(historiaid: current_user.id).order(mesfecha: :asc).pluck(:mesfecha, :global) ,xtitle: "N° de encuesta", ytitle: "Puntaje Global", width: "950px", height: "300px" , discrete: true , colors: ["#2F4F4F"],  label: "Puntaje"%>
+                          </table>
+                        </div>
+                      </div>
+                  </div>
+                 </div>
+
+              <div class="panel-heading" style="background-color:  #fff">
+                   <p class="panel-title"  style="font-size: 25pt; font-family: monospace;" >Resultados por Categoria </p>
+              </div>
+
+              <div class="panel-heading" style="background-color:  #d0dffa">
+                     <p class="font-weight-bold mb-2"  style="font-size: 18pt; font-family: monospace;" >Gobernanza y Seguimiento </p>
+                </div>
+                <div class="row pb-5 p-5" style="font-size: 12pt">
+                <div class="col-md-12">
+                    <div class="col-md-12">
+                      <div class="col-md-12 text-center">
+                      </br></br>
+                        <table class="table text-center" style="font-size: 10pt; align: center">
+                          <%= line_chart Historium.where(historiaid: current_user.id).order(mesfecha: :asc).pluck(:mesfecha, :gobbru) ,xtitle: "N° de encuesta", ytitle: "Puntaje ", width: "950px", height: "300px" , discrete: true , colors: ["#2669e2"],  label: "Puntaje"%>
+                        </table>
+                      </div>
+                    </div>
+                </div>
+               </div>
+</br></br>
+                 <div class="panel-heading" style="background-color:  #ffd18c">
+                        <p class="font-weight-bold mb-2"  style="font-size: 18pt; font-family: monospace;" >Cultura Sustentable </p>
+                   </div>
+                   <div class="row pb-5 p-5" style="font-size: 12pt">
+                   <div class="col-md-12">
+                       <div class="col-md-12">
+                         <div class="col-md-12 text-center">
+                         </br></br>
+                           <table class="table text-center" style="font-size: 10pt; align: center">
+                             <%= line_chart Historium.where(historiaid: current_user.id).order(mesfecha: :asc).pluck(:mesfecha, :cubru) ,xtitle: "N° de encuesta", ytitle: "Puntaje ", width: "950px", height: "300px" , discrete: true , colors: ["#e59824"],  label: "Puntaje"%>
+                           </table>
+                         </div>
+                       </div>
+                   </div>
+                  </div>
+
+                  <div class="panel-heading" style="background-color:  #dabcf6">
+                         <p class="font-weight-bold mb-2"  style="font-size: 18pt; font-family: monospace;" >Academia </p>
+                    </div>
+                    <div class="row pb-5 p-5" style="font-size: 12pt">
+                    <div class="col-md-12">
+                        <div class="col-md-12">
+                          <div class="col-md-12 text-center">
+                          </br></br>
+                            <table class="table text-center" style="font-size: 10pt; align: center">
+                              <%= line_chart Historium.where(historiaid: current_user.id).order(mesfecha: :asc).pluck(:mesfecha, :acbru) ,xtitle: "N° de encuesta", ytitle: "Puntaje ", width: "950px", height: "300px" , discrete: true , colors: ["#7b2dc4"],  label: "Puntaje"%>
+                            </table>
+                          </div>
+                        </div>
+                    </div>
+                   </div>
+
+                  <div class="panel-heading" style="background-color:  #ccffdd">
+                         <p class="font-weight-bold mb-2"  style="font-size: 18pt; font-family: monospace;" >Gestion de Campus </p>
+                    </div>
+                    <div class="row pb-5 p-5" style="font-size: 12pt">
+                    <div class="col-md-12">
+                        <div class="col-md-12">
+                          <div class="col-md-12 text-center">
+                          </br></br>
+                            <table class="table text-center" style="font-size: 10pt; align: center">
+                              <%= line_chart Historium.where(historiaid: current_user.id).order(mesfecha: :asc).pluck(:mesfecha, :gcbru) ,xtitle: "N° de encuesta", ytitle: "Puntaje ", width: "950px", height: "300px" , discrete: true , colors: ["#3aaa5f"],  label: "Puntaje"%>
+                            </table>
+                          </div>
+                        </div>
+                    </div>
+                   </div>
+
+                   <div class="panel-heading" style="background-color:  #e6f7ff">
+                          <p class="font-weight-bold mb-2"  style="font-size: 18pt; font-family: monospace;" >Responsabilidad Social </p>
+                     </div>
+                     <div class="row pb-5 p-5" style="font-size: 12pt">
+                     <div class="col-md-12">
+                         <div class="col-md-12">
+                           <div class="col-md-12 text-center">
+                           </br></br>
+                             <table class="table text-center" style="font-size: 10pt; align: center">
+                               <%= line_chart Historium.where(historiaid: current_user.id).order(mesfecha: :asc).pluck(:mesfecha, :rsbru) ,xtitle: "N° de encuesta", ytitle: "Puntaje ", width: "950px", height: "300px" , discrete: true , colors: ["#10a8ef"],  label: "Puntaje"%>
+                             </table>
+                           </div>
+                         </div>
+
+                     </div>
+                     <%= link_to 'DESCARGAR PDF', historia_path(:format => :pdf ), :class => "btn btn-lg btn-success", :style=>"font-size: 15pt;left: 80%;  position: relative; "%>
+
+                    </div>
+              </div>
+
+</div>
+</div>
+        </div>
+
+</body>

@@ -1,0 +1,86 @@
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Resies</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <div class="container-fluid">
+			<div class="row zsx">
+				<div class="col-lg-12 animated lightSpeedIn">
+					<p class="vcenter">
+					<h1><img src="<%= asset_path 'Logo 2.png'%>" width="500" height="150" alt=""></h1>
+
+					</p>
+				</div>
+			</div>
+		</div>
+  </head>
+
+  <body>
+
+    <% if current_user %>
+    <nav class="navbar navbar-default navbar-static-top" style="background-color: #E0FFFF">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#zsxnavcollapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+    <!-- <a class="navbar-brand" href="#top">TheBombHome</a> -->
+      </div>
+      <div class="collapse navbar-collapse"  id="zsxnavcollapse" >
+        <ul class="nav navbar-nav">
+          <a class="navbar-brand pull-left " href="/" style="font-size:20pt">Inicio</a>
+        </ul>
+        <ul class="nav navbar-nav pull-right">
+          <li style="font-size:20pt"><%= link_to 'Cerrar Session', destroy_user_session_path, method: :delete %></li>
+        </ul>
+    </div>
+  </div>
+  </nav>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</br></br></br></br></br>
+  <footer  style="background-color: #E0FFFF">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 ">
+              </br></br>
+                <a style="color: #006400; font-size: 15pt" >UNETE A LA RED </a><br>
+                <a style="color: #8B008B; font-size: 12pt" href="https://redcampussustentable.cl/unete-a-la-red/">RED CAMPUS SUSTENTABLE</a></br>
+                <a style="color: #8B008B; font-size: 12pt" href="mailto:contacto@redcampussustentable.cl">contacto@redcampussustentable.cl</a>
+            </div>
+
+            <div class="col-md-4 ">
+              </br></br>
+                <a style="color: #006400; font-size: 15pt">DIRECCIÓN</a></br>
+                <a style="color: #8B008B; font-size: 12pt">Av. Nueva Providencia 1363 Of. 1102</a></br>
+                <a style="color: #8B008B; font-size: 12pt">Providencia, Santiago Chile</a>
+            </div>
+
+            <div class="col-md-4 ">
+              </br></br>
+                <a style="color: #006400; font-size: 15pt">REDES SOCIALES SIGUENOS! </a></br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.instagram.com/redcampussustentable" target="_blank"><i class="fa fa-instagram fa-4x"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="https://twitter.com/rcs_chile" target="_blank"><i class="fa fa-twitter fa-4x"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="https://www.facebook.com/Redcampussustentable" target="_blank"><i class="fa fa-facebook fa-4x"></i></a>
+            </div>
+          </div>
+        </div>
+        </br></br>
+</footer>
+
+</html>

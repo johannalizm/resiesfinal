@@ -1,0 +1,75 @@
+<%if current_user %>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<%= stylesheet_link_tag "manualresies.css" %>
+<!DOCTYPE html>
+<html lang="en">
+
+    <body>
+      <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="main-timeline">
+                            <a href="#" class="timeline">
+                                <div class="timeline-icon"><i class="fa fa-question"></i></div>
+                                <div class="timeline-content">
+                                    <h3 class="title">¿ QUÉ ES RESIES ?</h3>
+                                    <p class="description">
+                                      RESIES es una herramienta para reporte y evaluación de la sustentabilidad diseñada para instituciones de educación superior.
+                                      </br></br>Esta herramienta tiene 4 niveles de jerarquía:
+                                      </br>Indicadores
+                                      </br>Categorías
+                                      </br>Subcategorías
+                                      </br>Resultado Global.
+
+                                    </p>
+                                </div>
+                            </a>
+                            <a href="https://docs.google.com/document/d/16FQ0fzgTVSZcDEc6vTwG8nxygZQNbQz_1ou2YGmxEN0/edit" class="timeline">
+                                <div class="timeline-icon"><i class="fa fa-download"></i></div>
+                                <div class="timeline-content">
+                                    <h3 class="title">MANUAL DE USO</h3>
+                                    <p class="description">
+                                        Para ver el Manual de Uso debe acceder al icono de descargar y se abrira el documento en drive, donde podra ver el manual en linea o descargar.
+                                    </p>
+                                </div>
+                            </a>
+                            <a href="#" class="timeline">
+                                <div class="timeline-icon"><i class="fa fa-cogs"></i></div>
+                                <div class="timeline-content">
+                                    <h3 class="title">INSTRUCCIONES DE USO </h3>
+                                    <p class="description">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ducimus officiis quod! Aperiam eveniet nam nostrum odit quasi ullam voluptatum.
+                                    </p>
+                                </div>
+                            </a>
+                            <a href="#" class="timeline">
+                                <div class="timeline-icon"><i class="fa fa-check"></i></div>
+                                <div class="timeline-content">
+                                    <h3 class="title">DESCRIPCIÓN </h3>
+                                    <p class="description">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ducimus officiis quod! Aperiam eveniet nam nostrum odit quasi ullam voluptatum.
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
+<%else%>
+<script>
+    alert("Usted no puede ingresar a esta dirección");
+    window.location.href="/"
+</script>
+
+
+<%end%>

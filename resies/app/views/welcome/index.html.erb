@@ -1,0 +1,157 @@
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<%= stylesheet_link_tag "menu.css" %>
+
+
+<html>
+<head>
+</head>
+
+<body>
+  <%if !current_user%>
+      <%= render :file => '/devise/sessions/new' %>
+  <% elsif current_user.rol=='user'%>
+  	<div class="container">
+  	<div class="row">
+
+    <!--team-1-->
+    <div class="col-lg-4">
+    <div class="team-main">
+    <div class="team-front">
+    <img src="<%= asset_path 'manual2.png'%>" class="img-fluid" />
+    <h3><a href="/manual"> Manual de Uso</a></h3>
+    </div>
+    </div>
+    </div>
+    <!--team-1-->
+
+  	<!--team-2-->
+  	<div class="col-lg-4">
+  	<div class="team-main">
+  	<div class="team-front">
+  	<img src="<%= asset_path 'instituciones.png'%>" class="img-fluid" />
+  	<h3><%= link_to "Datos Institucionales", edit_institucione_url(current_user)%></h3>
+  	</div>
+  	</div>
+  	</div>
+    <!--team-2-->
+
+  	<!--team-3-->
+  	<div class="col-lg-4">
+  	<div class="team-main">
+  	<div class="team-front">
+  	<img src="<%= asset_path 'editarusuario.png'%>" class="img-fluid" />
+    <h3><a href="/users/edit">Editar Usuario</a></h3>
+  	</div>
+  	</div>
+  	</div>
+  	<!--team-3-->
+
+    <!--team-4-->
+  	<div class="col-lg-4">
+  	<div class="team-main">
+  	<div class="team-front">
+  	<img src="<%= asset_path 'encuesta.png'%>" class="img-fluid" />
+    <h3><a href="/formularios/new">Encuesta</a></h3>
+  	</div>
+  	</div>
+  	</div>
+  	<!--team-4-->
+
+    <!--team-5-->
+    <div class="col-lg-4">
+    <div class="team-main">
+    <div class="team-front">
+    <img src="<%= asset_path 'respuestas.png'%>" class="img-fluid" />
+    <h3><a href="/formularios">Resultados</a></h3>
+    </div>
+    </div>
+    </div>
+    <!--team-5-->
+
+    <div class="col-lg-4">
+    <div class="team-main">
+    <div class="team-front">
+    <img src="<%= asset_path 'historial.jpg'%>" class="img-fluid" />
+    <h3><a href="/historia">Historial</a></h3>
+    </div>
+    </div>
+    </div>
+
+    </div>
+    </div>
+
+
+    <% elsif current_user.rol=='admin'%>
+    	<div class="container">
+    	<div class="row">
+    	<!--team-1-->
+    	<div class="col-lg-4">
+    	<div class="team-main">
+    	<div class="team-front">
+    	<img src="<%= asset_path 'nuevousuario.png'%>" class="img-fluid" />
+    	<h3><a href="/users/sign_up">Nuevo Usuario</a></h3>
+    	</div>
+    	</div>
+    	</div>
+      <div class="col-lg-4">
+      <div class="team-main">
+      <div class="team-front">
+      <img src="<%= asset_path 'editarusuario.png'%>" class="img-fluid" />
+      <h3><a href="/users/edit">Editar Usuario</a></h3>
+      </div>
+      </div>
+      </div>
+
+      <!--team-3-->
+    	<div class="col-lg-4">
+    	<div class="team-main">
+    	<div class="team-front">
+    	<img src="<%= asset_path 'instituciones.png'%>" class="img-fluid" />
+      <h3><a href="/instituciones">Instituciones</a></h3>
+    	</div>
+    	</div>
+    	</div>
+    	<!--team-3-->
+
+      <!--team-4-->
+      <div class="col-lg-4">
+      <div class="team-main">
+      <div class="team-front">
+      <img src="<%= asset_path 'preguntas.png'%>" class="img-fluid" />
+      <h3><a href="/questions">Preguntas</a></h3>
+      </div>
+      </div>
+      </div>
+      <!--team-4-->
+
+      <!--team-4-->
+    	<div class="col-lg-4">
+    	<div class="team-main">
+    	<div class="team-front">
+    	<img src="<%= asset_path 'encuesta.png'%>" class="img-fluid" />
+      <h3><a href="/formularios/new">Encuesta</a></h3>
+    	</div>
+    	</div>
+    	</div>
+    	<!--team-4-->
+      <div class="col-lg-4">
+      <div class="team-main">
+      <div class="team-front">
+      <img src="<%= asset_path 'respuestas.png'%>" class="img-fluid" />
+      <h3><a href="/historia">Historial</a></h3>
+      </div>
+      </div>
+      </div>
+
+    </div>
+    </div>
+<%end%>
+
+</body>
+
+</html>

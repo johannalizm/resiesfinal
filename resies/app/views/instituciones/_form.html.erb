@@ -1,0 +1,111 @@
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<%= javascript_include_tag "jr", "data-turbolinks-track" => true  %>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<hr>
+<div class="container bootstrap snippet">
+  <div id="user" class="col-md-12" >
+  <%= form_with(model: institucione, local: true) do |form| %>
+    <% if institucione.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(institucione.errors.count, "error") %> Prohibido que esta institución se guarde </h2>
+
+        <ul>
+        <% institucione.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="row">
+  		<div class="col-sm-10"><h2>Datos Institucionales </h2></div>
+    </div>
+    <div class="row">
+  		<div class="col-sm-4"><!--left col-->
+      <div class="text-center">
+        <img src="<%= institucione.avatar.url(:medium)%>"  alt="avatar">
+        <%= form.file_field :avatar %>
+      </div></hr><br>
+        </div><!--/col-3-->
+    	<div class="col-sm-8">
+          <div class="tab-content">
+                  <form class="form" action="##" method="post" id="registrationForm">
+                      <div class="form-group">
+                          <div class="col-xs-6">
+                              <label for="first_name"><h4>Nombre Institución</h4></label>
+                              <%= form.text_field :nombre, id: :institucione_nombre, class:'form-control',placeholder:'Universidad Tecnologica Metropolitana' %>
+                          </div>
+                      </div>
+                      <div class="form-group">
+
+                          <div class="col-xs-6" >
+                              <label for="email"><h4>Dirección</h4></label>
+                          <%= form.text_field :direccion, id: :institucione_direccion, class:'form-control',placeholder:'Dieciocho 161, Santiago'%>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="col-xs-6">
+                              <label ><h4>Tipo de Institución</h4></label>
+                                <%= form.collection_select :tipoinstitucione_id, Tipoinstitucione.all, :id, :nombre , {include_blank: ''} , {class: 'form-control'}%>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <div class="col-xs-6">
+                             <label ><h4>Sistema de financiamiento</h4></label>
+                             <%= form.collection_select :tiporelacione_id, Tiporelacione.all, :id, :nombre , {include_blank: ''} , {class: 'form-control'} %>
+                      </div>
+
+                      <div class="form-group">
+                          <div class="col-xs-6">
+                              <label ><h4>País</h4></label>
+                              <%= form.collection_select :paise_id, Paise.all, :id, :nombre , {include_blank: ''} , {class: 'form-control'} %>
+                          </div>
+                      </div>
+                      <div class="form-group">
+
+                          <div class="col-xs-6">
+                              <label><h4>Región</h4></label>
+                               <%= form.grouped_collection_select :region_id, Paise.order(:nombre),:regions, :nombre, :id, :nombre , {include_blank: ''} , {class: 'form-control'}%>
+                          </div>
+                      </div>
+                      <div class="form-group">
+
+                          <div class="col-xs-6">
+                            <label for="password2"><h4>Codigo Postal</h4></label>
+                                <%= form.text_field :codigopostal, id: :institucione_codigopostal, class:'form-control',placeholder:'8320000'   %>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                           <div class="col-xs-12">
+                                <br>
+                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Guardar</button>
+
+                            </div>
+                      </div>
+
+              	</form>
+
+        </div><!--/col-9-->
+        <% end %>
+    </div><!--/row-->
+</div>
+</div>
+</div>
+</div>
+</body>

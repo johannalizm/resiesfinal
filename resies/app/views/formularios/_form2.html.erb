@@ -1,0 +1,221 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<%= stylesheet_link_tag "preg.css" %>
+<%= javascript_include_tag "pre", "data-turbolinks-track" => true  %>
+
+<%= form_with(model: formulario, local: true) do |form| %>
+  <% if formulario.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(formulario.errors.count, "error") %> prohibited this formulario from being saved:</h2>
+
+      <ul>
+      <% formulario.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="container" style="padding-top:30px;">
+  <div class="stepwizard">
+     <div class="stepwizard-row setup-panel">
+         <div class="stepwizard-step col-xs-2">
+             <a href="#step-1" type="button" class="btn btn-success btn-circle">1</a>
+             <p><small style= "color: #000; font-size:15px">Datos Encargados</small></p>
+         </div>
+         <div class="stepwizard-step col-xs-2">
+             <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+             <p><small style= "color: #000; font-size:15px">Datos Institucionales</small></p>
+         </div>
+         <div class="stepwizard-step col-xs-1">
+             <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+             <p><small style= "color: #000; font-size:15px">Gobernanza</small></p>
+         </div>
+         <div class="stepwizard-step col-xs-2">
+             <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+             <p><small style= "color: #000; font-size:15px">Cultura</small></p>
+         </div>
+         <div class="stepwizard-step col-xs-1">
+             <a href="#step-5" type="button" class="btn btn-default btn-circle" disabled="disabled">5</a>
+             <p><small style= "color: #000; font-size:15px">Academia</small></p>
+         </div>
+         <div class="stepwizard-step col-xs-2">
+             <a href="#step-6" type="button" class="btn btn-default btn-circle" disabled="disabled">6</a>
+             <p><small style= "color: #000; font-size:15px">Campus</small></p>
+         </div>
+         <div class="stepwizard-step col-xs-2">
+             <a href="#step-7" type="button" class="btn btn-default btn-circle" disabled="disabled">7</a>
+             <p><small style= "color: #000; font-size:15px">Responsabilidad Social</small></p>
+         </div>
+     </div>
+  </div>
+    <div class="panel panel-default setup-content" id="step-1">
+            <div class="panel-heading" style="background-color: #E0FFFF">
+                 <h3 class="panel-title">Datos Encargados</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="control-label"> Nombre Encargado: </label>
+                    <%= form.text_field :nombre_encargado, id: :formulario_nombre_encargado, class:'form-control', placeholder:' Ej: Juan Alberto Bustos Garcia' %>
+                </div>
+                <div class="form-group">
+                        <label class="control-label"> Telefono: </label>
+                        <%= form.text_field :telefono, id: :formulario_telefono, class:'form-control', placeholder:' Ej: 961476243' %>
+                </div>
+                <div class="form-group">
+                      <label class="control-label"> Fecha: </label>
+                      <%= form.date_field :fecha, id: :formulario_fecha, class:'form-control'%>
+                </div>
+                <button class="btn btn-success  btn-lg nextBtn pull-right" type="button">Next</button>
+            </div>
+        </div>
+
+
+    <div class="panel panel-default setup-content" id="step-2">
+          <div class="panel-heading" style="background-color: #E0FFFF">
+               <h3 class="panel-title" >Datos Institucionales</h3>
+          </div>
+      <div class="panel-body">
+          <div class="col-md-12 text-center">
+            <div class="panel-heading" style="background-color: #DDA0DD">
+                 <h3 class="panel-title" >Población </h3>
+            </div></br>
+          <table class="table text-center" style="font-size: 11pt">
+                <tr style="background-color: 	#E0FFFF">
+                    <th class="border-0 text-uppercase small font-weight-bold col-xs-1 text-center">Indicador</th>
+                    <th class="border-0 text-uppercase small font-weight-bold col-xs-3 text-center">Pregunta</th>
+                    <th class="border-0 text-uppercase small font-weight-bold col-xs-2 text-center">Respuesta</th>
+                    <th class="border-0 text-uppercase small font-weight-bold col-xs-2 text-center">Descripción</th>
+                    <th class="border-0 text-uppercase small font-weight-bold col-xs-2 text-center">Verificación</th>
+                    <th class="border-0 text-uppercase small font-weight-bold col-xs-2 text-center">Comentario</th>
+                </tr>
+          </table>
+          </div>
+<% @questions.each do |question| %>
+<%= form.fields_for :resultados do |s| %>
+                  <% if question.subcat.nombre == 'Población'%>
+                     <% valor = question.id%>
+                     <div class="col-md-12 text-justify">
+                       <table class="table text-center" style="font-size: 10pt">
+                     <tr>
+                     <td class="col-xs-1" ><%= question.indicador%></td>
+                     <td class= "col-xs-3"><%= question.pregunta %></td>
+                     <% if question.tiporespuesta == 'Si - No' || question.tiporespuesta == 'Alternativa' %>
+                        <td class="col-xs-2"><%= s.collection_select :respuesta,   Alternativa.where(question_id: valor) , :puntaje, :nombre ,{include_blank: ''} , {class: 'form-control'} %></div></td>
+                        <td class="col-xs-2"><%= s.text_area :descripcion, placeholder:' Descripción'  %></td>
+                        <td class="col-xs-2"><%= s.text_area :verificacion, placeholder:' Verificación' %></td>
+                        <td class="col-xs-2"><%= s.text_area :comentario, placeholder:'Comentario' %></td>
+                        <%= s.hidden_field 'question_id',:value => question.id%>
+                     <% elsif question.tiporespuesta == 'Ingresa Valor Manualmente' %>
+                        <td class="col-xs-2"><%= s.text_area :respuesta,  placeholder:' Respuesta', class:'form-control' %></td>
+                        <td class="col-xs-2"><%= s.text_area :descripcion, placeholder:' Descripción' , class:'form-control'%></td>
+                        <td class="col-xs-2"><%= s.text_area :verificacion, placeholder:' Verificación', class:'form-control'%></td>
+                        <td class="col-xs-2"><%= s.text_area :comentario, placeholder:'Comentario' ,  class:'form-control' %></td>
+                        <%= s.hidden_field 'question_id',:value => question.id%>
+                      <%end%>
+                      </tr>
+                    </table>
+                  </div>
+                  <% elsif question.subcat.nombre != 'Población'%>
+                      <%  break %>
+                  <%end%>
+
+
+
+          <div class="col-md-12 text-center">
+              <div class="panel-heading" style="background-color: #DDA0DD">
+                 <h3 class="panel-title" >Instalaciones</h3>
+              </div></br>
+              <table class="table text-center" style="font-size: 11pt">
+                <tr style="background-color: 	#E0FFFF">
+                  <th class="border-0 text-uppercase small font-weight-bold col-xs-1 text-center">Indicador</th>
+                  <th class="border-0 text-uppercase small font-weight-bold col-xs-3 text-center">Pregunta</th>
+                  <th class="border-0 text-uppercase small font-weight-bold col-xs-2 text-center">Respuesta</th>
+                  <th class="border-0 text-uppercase small font-weight-bold col-xs-2 text-center">Descripción</th>
+                  <th class="border-0 text-uppercase small font-weight-bold col-xs-2 text-center">Comentario</th>
+                  <th class="border-0 text-uppercase small font-weight-bold col-xs-2 text-center">verificacion</th>
+                </tr>
+              </table>
+          </div>
+
+                <% if question.subcat.nombre != 'Instalaciones'%>
+                    <%break%>
+                <% elsif question.subcat.nombre == 'Instalaciones'%>
+                    <% valor = question.id%>
+                    <div class="col-md-12 text-justify">
+                    <table class="table text-center" style="font-size: 10pt">
+                    <tr>
+                        <td class="col-xs-1" ><%= question.indicador%></td>
+                        <td class= "col-xs-3"><%= question.pregunta %></td>
+                        <% if question.tiporespuesta == 'Si - No' || question.tiporespuesta == 'Alternativa' %>
+                          <td class="col-xs-2"><%= s.collection_select :respuesta,   Alternativa.where(question_id: valor) , :puntaje, :nombre ,{include_blank: ''} , {class: 'form-control'} %></div></td>
+                          <td class="col-xs-2"><%= s.text_area :descripcion, placeholder:' Descripción'  %></td>
+                          <td class="col-xs-2"><%= s.text_area :verificacion, placeholder:' Verificación' %></td>
+                          <td class="col-xs-2"><%= s.text_area :comentario, placeholder:'Comentario' %></td>
+                          <%= s.hidden_field 'question_id',:value => question.id%>
+                        <% elsif question.tiporespuesta == 'Ingresa Valor Manualmente' %>
+                          <td class="col-xs-2"><%= s.text_area :respuesta,  placeholder:' Respuesta', class:'form-control' %></td>
+                          <td class="col-xs-2"><%= s.text_area :descripcion, placeholder:' Descripción' , class:'form-control'%></td>
+                          <td class="col-xs-2"><%= s.text_area :comentario, placeholder:'Comentario' ,  class:'form-control' %></td>
+                          <td class="col-xs-2" ><%= s.file_field :verificacion, placeholder:' Verificación',class:'form-control'%></td>
+                          <%= s.hidden_field 'question_id',:value => question.id%>
+                        <%end%>
+                      </tr>
+                    </table>
+                  </div>
+                <%end%>
+
+
+          <div class="col-md-12 text-center">
+              <div class="panel-heading" style="background-color: #DDA0DD">
+                 <h3 class="panel-title" >Año Base</h3>
+              </div></br>
+              <table class="table text-center" style="font-size: 11pt">
+                <tr style="background-color: 	#E0FFFF">
+                  <th class="border-0 text-uppercase small font-weight-bold col-xs-1 text-center">Indicador</th>
+                  <th class="border-0 text-uppercase small font-weight-bold col-xs-3 text-center">Pregunta</th>
+                  <th class="border-0 text-uppercase small font-weight-bold col-xs-2 text-center">Respuesta</th>
+                  <th class="border-0 text-uppercase small font-weight-bold col-xs-2 text-center">Descripción</th>
+                  <th class="border-0 text-uppercase small font-weight-bold col-xs-2 text-center">Verificación</th>
+                  <th class="border-0 text-uppercase small font-weight-bold col-xs-2 text-center">Comentario</th>
+                </tr>
+              </table>
+          </div>
+
+                <% if question.subcat.nombre != 'Año Base'%>
+                    <%break%>
+                <% elsif question.subcat.nombre == 'Año Base'%>
+                    <% valor = question.id%>
+                    <div class="col-md-12 text-justify">
+                    <table class="table text-center" style="font-size: 10pt">
+                    <tr>
+                        <td class="col-xs-1" ><%= question.indicador%></td>
+                        <td class= "col-xs-3"><%= question.pregunta %></td>
+                        <% if question.tiporespuesta == 'Si - No' || question.tiporespuesta == 'Alternativa' %>
+                          <td class="col-xs-2"><%= s.collection_select :respuesta,   Alternativa.where(question_id: valor) , :puntaje, :nombre ,{include_blank: ''} , {class: 'form-control'} %></div></td>
+                          <td class="col-xs-2"><%= s.text_area :descripcion, placeholder:' Descripción'  %></td>
+                          <td class="col-xs-2"><%= s.text_area :verificacion, placeholder:' Verificación' %></td>
+                          <td class="col-xs-2"><%= s.text_area :comentario, placeholder:'Comentario' %></td>
+                          <%= s.hidden_field 'question_id',:value => question.id%>
+                        <% elsif question.tiporespuesta == 'Ingresa Valor Manualmente' %>
+                          <td class="col-xs-2"><%= s.text_area :respuesta,  placeholder:' Respuesta', class:'form-control' %></td>
+                          <td class="col-xs-2"><%= s.text_area :descripcion, placeholder:' Descripción' , class:'form-control'%></td>
+                          <td class="col-xs-2"><%= s.text_area :verificacion, placeholder:' Verificación', class:'form-control'%></td>
+                          <td class="col-xs-2"><%= s.text_area :comentario, placeholder:'Comentario' ,  class:'form-control' %></td>
+                          <%= s.hidden_field 'question_id',:value => question.id%>
+                        <%end%>
+                      </tr>
+                    </table>
+                  </div>
+                <%end%>
+<%end%>    <%end%>
+              <button class="btn btn-success  btn-lg nextBtn pull-right" type="button">Next</button>
+      </div>
+    </div>
+
+<%end%>

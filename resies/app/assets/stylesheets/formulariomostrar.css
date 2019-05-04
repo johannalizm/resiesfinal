@@ -1,0 +1,6 @@
+table,td,tr {
+	border: 2px solid black;
+	font-family: monospace;
+	text-align: center;
+}
+.page-break { display:block; clear:both; page-break-after:always; }

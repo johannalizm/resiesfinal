@@ -1,0 +1,44 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<%= stylesheet_link_tag "registro.css" %>
+<% resource_name.to_s.humanize %>
+<body>
+<br />
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+<div class="container">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+         <div class="row myborder">
+             <h4 style=" font-family:'Buenard', serif; color: #72c02c; margin: initial; margin-bottom: 10px; font-size: 30pt; text-align:center;">Editar</h4><hr>
+            <div class="input-group margin-bottom-20">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user mycolor"></i></span>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', :disabled=>true %>
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div><% resource.unconfirmed_email %></div>
+            <% end %></div>
+            <div class="input-group margin-bottom-20">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock mycolor"></i></span>
+                <%= f.password_field :password, autocomplete: "new-password", class: 'form-control',placeholder:'Nueva Contraseña 6 caracteres minimos ' %></div>
+           <div class="input-group margin-bottom-20">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock mycolor"></i></span>
+                <%= f.password_field :password_confirmation, autocomplete: "new-password",  class: 'form-control',placeholder:'Nueva Contraseña Confirmacion ' %></div>
+            <div class="input-group margin-bottom-20">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock mycolor"></i></span>
+                <%= f.password_field :current_password, autocomplete: "current-password",  class: 'form-control',placeholder:'Contraseña Actual'  %></div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn-u pull-left" type="submit">Editar</button>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+<% end %>
+</body>

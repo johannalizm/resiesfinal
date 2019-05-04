@@ -1,0 +1,86 @@
+<p id="notice"><%= notice %></p>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container" style=" font-family: monospace; margin-top: 60px;">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body p-0" style="background-color: #E0FFFF">
+                    <div class="row p-5" >
+                        <div class="col-md-11 text-center" >
+                            <p class="font-weight-bold mb-1" style="font-size: 35pt; font-family: monospace;">Pregunta</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                    <div class="row pb-5 p-5" style="font-size: 12pt">
+                        <div class="col-md-12">
+                          <p>
+                            <strong>Id:</strong>
+                            <%= @question.id %>
+                          </p>
+                            <p>
+                              <strong>Indicador:</strong>
+                              <%= @question.indicador %>
+                            </p>
+
+                            <p>
+                              <strong>Pregunta:</strong>
+                              <%= @question.pregunta %>
+                            </p>
+
+                            <p>
+                              <strong>Categoria:</strong>
+                              <%= @question.subcat.cat.nombre%>
+                            </p>
+
+                            <p>
+                              <strong>Subcategoria:</strong>
+                              <%= @question.subcat.nombre %>
+                            </p>
+                            <p>
+                              <strong>Tiporespuesta:</strong>
+                              <%= @question.tiporespuesta %>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row p-5" >
+                        <div class="col-md-12 text-center">
+                            <table class="table text-center" style="font-size: 15pt">
+                                <thead>
+                                    <tr style="background-color: #E0FFFF">
+                                        <th class="border-0 text-uppercase small font-weight-bold">ID</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Alternativa</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                      <% for alternativa in @question.alternativas %>
+                                      <tr>
+                                           <td><%= alternativa.id %></td>
+                                           <td><%= alternativa.nombre %></td>
+                                           <td><%= alternativa.puntaje%></td>
+                                      </tr>
+                                       <% end %>
+                                </tbody>
+                            </table>
+                          </br>
+
+                          </br>
+                        </div>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <%= link_to 'Editar', edit_question_path(@question) , class: 'btn btn-success ', style:'font-size: 15pt; font-family: serif;' %>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                          &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+
+                          <%= link_to 'Volver', questions_path  , class: 'btn btn-warning', style:'font-size: 15pt; font-family: serif; ' %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></br></br>

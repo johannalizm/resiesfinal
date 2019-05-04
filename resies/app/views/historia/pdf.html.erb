@@ -1,0 +1,1076 @@
+<%= form_with(model: historium, local: true) do |form| %>
+  <% if historium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(historium.errors.count, "error") %> prohibited this historium from being saved:</h2>
+
+      <ul>
+      <% historium.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<%= stylesheet_link_tag "formulariomostrar.css" %>
+<%= wicked_pdf_stylesheet_link_tag "formulariomostrar.css" -%>
+
+<% gob= 0.0 %>
+<% gob1= 0.0 %>
+<% gob2= 0.0 %>
+<% gob3= 0.0 %>
+<% gob4= 0.0 %>
+<% gob5= 0.0 %>
+<% gob6= 0.0 %>
+<% suma = 0.0%>
+<% total = 0.0 %>
+<% resto =0.0 %>
+<%igob3=0.0%>
+<%igob5=0.0%>
+<%igob6=0.0%>
+<%igob7=0.0%>
+<%di28=0.0%>
+<%di29=0.0%>
+<%di281=0.0%>
+<%di291=0.0%>
+<%puntaje = 0.0 %>
+<%resta= 0.0 %>
+<%punt=0.0%>
+<%cu1=0.0%>
+<%cu1b =0.0%>
+<%cu2 = 0.0 %>
+<%cu2b = 0.0 %>
+<%cu3 = 0.0 %>
+<%cu3b = 0.0 %>
+<%cu4 = 0.0 %>
+<%cu4b = 0.0 %>
+<%cu5 = 0.0 %>
+<%cu5b = 0.0 %>
+<%cu = 0.0 %>
+<% cut = 0.0 %>
+<% val = 0.0%>
+<%di12 = 0.0 %>
+<%di13 = 0.0 %>
+<%di14 = 0.0 %>
+<%di15 = 0.0 %>
+<%di18 = 0.0 %>
+<%di20 = 0.0 %>
+<%cu11 = 0.0%>
+<%pu = 0.0 %>
+<%pt = 0.0 %>
+<%aux = 0.0 %>
+<%aux2 = 0.0 %>
+<%aux3 = 0.0%>
+<% aux4 =1.0%>
+<%pe = 0.0 %>
+<%pa=0.0%>
+<%pj=0.0%>
+<%cu31 = 0.0%>
+<%s =0.0%>
+<%aux5= 0.0%>
+
+   <% @resultados.each do |resultado| %>
+   <% if @historium.id == resultado.formulario_id%>
+        <% if resultado.question.subcat.nombre == 'GOB1. Participación de grupos de interés' %>
+          <%valor = resultado.respuesta.to_f%>
+          <% gob1 = gob1 + valor %>
+        <% elsif resultado.question.subcat.nombre == 'GOB2. Compromiso Institucional'%>
+          <% valor = resultado.respuesta.to_f %>
+          <%gob2 = gob2 + valor %>
+        <% elsif resultado.question.subcat.nombre == 'GOB3. Plan/Estrategia de Sustentabilidad'%>
+          <% if resultado.question.indicador == 'GOB3.1'%>
+            <% igob3 = resultado.respuesta %>
+          <%elsif resultado.question.indicador != 'GOB3.1'%>
+            <% if igob3 == '1.0' %>
+              <% valor = resultado.respuesta.to_f %>
+              <% gob3 = gob3 + valor  %>
+              <%if gob3 > 100 %>
+                <% gob3 = 100 %>
+              <% elsif %>
+                <% gob3 = gob3  %>
+              <%end%>
+            <%elsif%>
+                <% gob3 = 0.0 %>
+            <%end%>
+          <%end%>
+        <% elsif resultado.question.subcat.nombre == 'GOB4. Reportabilidad y Transparencia'%>
+            <% valor = resultado.respuesta.to_f %>
+            <%gob4 = gob4 + valor %>
+        <% elsif resultado.question.subcat.nombre == 'GOB5. Huella de Carbono'%>
+          <% if resultado.question.indicador == 'GOB5.1' %>
+            <% igob5 = resultado.respuesta %>
+            <% if igob5 == '2.0' || igob5 == '3.0' %>
+                <% total = 20 %>
+            <%elsif %>
+                <% total = 0.0 %>
+             <%end%>
+          <% elsif resultado.question.indicador == 'GOB5.3' || resultado.question.indicador == 'GOB5.4' || resultado.question.indicador == 'GOB5.5' || resultado.question.indicador == 'GOB5.6'%>
+              <% igob6 = resultado.respuesta %>
+              <% if igob5 == '3.0' && igob6 == '1.0' %>
+                 <% suma = suma + 5 %>
+                 <% if suma > 10 %>
+                    <% suma = 10 %>
+                 <% end %>
+             <%elsif%>
+                 <% suma = suma %>
+             <%end%>
+            <%elsif resultado.question.indicador == 'GOB5.8' %>
+                   <% igob7 = resultado.respuesta.to_f %>
+                   <% if igob7 > 0 %>
+                     <% @resultados.each do |res| %>
+                       <% if res.question.indicador == 'DI28'%>
+                         <% di28 = res.respuesta.to_f %>
+                       <%elsif res.question.indicador == 'DI29' %>
+                         <% di29 = res.respuesta.to_f %>
+                       <%end%>
+                     <%end%>
+                     <% if igob5 == '3.0' %>
+                       <% if di29 > 0 %>
+                         <% puntaje = (50*((di29 - igob7)/ di29))%>
+                       <%end%>
+                     <% elsif igob5 != '3.0' %>
+                       <% if di28 > 0 %>
+                         <% puntaje = 40*((di28 - igob7)/ di28)%>
+                       <%end%>
+                     <%end%>
+                   <%end%>
+               <%elsif %>
+                 <% resto = resto + resultado.respuesta.to_f %>
+               <%end%>
+       <% elsif resultado.question.subcat.nombre == 'GOB6. Coordinación Sustentabilidad'%>
+                  <% valor = resultado.respuesta.to_f %>
+                  <%gob6 = gob6 + valor %>
+        <%elsif resultado.question.subcat.nombre == 'CU1. Estudiantes promotores de la Sustentabilidad' %>
+            <% if resultado.question.indicador == 'CU1.1' %>
+                <% cu11 = resultado.respuesta %>
+            <% elsif resultado.question.indicador != 'CU1.5' && resultado.question.indicador != 'CU1.1'%>
+                <% val = val + resultado.respuesta.to_f%>
+            <% elsif resultado.question.indicador == 'CU1.5' %>
+                <% cu15 = resultado.respuesta %>
+                <% @resultados.each do |res| %>
+                  <% if res.question.indicador == 'DI12' %>
+                      <% di12 =  res.respuesta %>
+                  <%elsif res.question.indicador == 'DI13' %>
+                      <% di13 =  res.respuesta %>
+                  <%end%>
+                 <%end%>
+                 <%if  cu11 == '1.0'%>
+                  <% sum = di12.to_f + di13.to_f %>
+                  <% if sum > 0 %>
+                      <% ptj = cu15.to_f / sum %>
+                  <%elsif %>
+                    <% ptj = 0%>
+                  <%end%>
+                  <%if val > 1 %>
+                  <% aux2 = 2000 * ptj * 1 %>
+                  <% if aux2 > 100 %>
+                      <% punt = 100%>
+                  <% elsif %>
+                      <% punt = aux2 %>
+                  <%end%>
+                  <%elsif%>
+                      <%punt = 0%>
+                  <%end%>
+                <%end%>
+              <%end%>
+          <%elsif resultado.question.subcat.nombre == 'CU2. Inducción a la Sustentabilidad para estudiantes'%>
+              <% if resultado.question.indicador != 'CU2.2'%>
+                  <%  aux = resultado.respuesta %>
+              <%elsif resultado.question.indicador == 'CU2.2'%>
+                    <%aux2 = resultado.respuesta.to_f%>
+                    <% @resultados.each do |res| %>
+                        <% if res.question.indicador == 'DI14'%>
+                            <%di14 = res.respuesta %>
+                        <% elsif res.question.indicador == 'DI15'%>
+                            <%di15 = res.respuesta %>
+                        <%end%>
+                    <%end%>
+                    <% sum = di15.to_f + di14.to_f %>
+                    <%aux3 = aux2 / sum %>
+                    <%if aux2 > sum %>
+                      <% pu = 0 %>
+                    <% elsif %>
+                        <% if aux == '1.0' %>
+                            <% pu = 100 * aux3 %>
+                        <%elsif %>
+                            <% pu = 0 %>
+                        <%end%>
+                    <%end%>
+              <%end%>
+              <%elsif resultado.question.subcat.nombre == 'CU3. Funcionarios promotores de la Sustentabilidad' %>
+                  <% if resultado.question.indicador == 'CU3.1' %>
+                      <% cu31 = resultado.respuesta %>
+                  <% elsif resultado.question.indicador != 'CU3.5' && resultado.question.indicador != 'CU3.1'%>
+                      <% val = val + resultado.respuesta.to_f%>
+                  <% elsif resultado.question.indicador == 'CU3.5' %>
+                      <% cu35 = resultado.respuesta %>
+                      <% @resultados.each do |res| %>
+                        <% if res.question.indicador == 'DI18' %>
+                            <% di18 =  res.respuesta %>
+                        <%elsif res.question.indicador == 'DI20' %>
+                            <% di20 =  res.respuesta %>
+                        <%end%>
+                       <%end%>
+                       <%if  cu31 == '1.0'%>
+                        <% su = di18.to_f + di20.to_f %>
+                        <% if su > 0 %>
+                            <% ptj = cu35.to_f / su %>
+                        <%elsif %>
+                          <% ptj = 0%>
+                        <%end%>
+                        <%if val > 1 %>
+                        <% aux2 = 2000 * ptj * 1 %>
+                        <% if aux2 > 100 %>
+                            <% pt = 100%>
+                        <% elsif %>
+                            <% pt = aux2 %>
+                        <%end%>
+                        <%elsif%>
+                            <%pt = 0%>
+                        <%end%>
+                      <%end%>
+                    <%end%>
+                <%elsif resultado.question.subcat.nombre == 'CU4.Inducción a la sustentabilidad para funcionarios'%>
+                        <% if resultado.question.indicador != 'CU4.2'%>
+                            <%  aux = resultado.respuesta %>
+                        <%elsif resultado.question.indicador == 'CU4.2'%>
+                              <%aux2 = resultado.respuesta.to_f%>
+                              <%aux3 = aux2 / di20.to_f %>
+                              <%if aux3 > 1.0 %>
+                                <% pe = 100 %>
+                              <% elsif %>
+                                  <% if aux == '1.0' %>
+                                      <% pe = 100 * aux3 %>
+                                  <%elsif %>
+                                      <% pe = 0 %>
+                                  <%end%>
+                              <%end%>
+                          <%end%>
+                  <%elsif resultado.question.subcat.nombre == 'CU5. Programa de prácticas sustentables para oficinas'%>
+                        <% if resultado.question.indicador == 'CU5.1'%>
+                            <%  aux = resultado.respuesta %>
+                        <%elsif resultado.question.indicador == 'CU5.2'%>
+                            <%aux2 = resultado.respuesta.to_f%>
+                        <%elsif resultado.question.indicador== 'CU5.3'%>
+                            <%aux3 = resultado.respuesta.to_f %>
+                        <%end%>
+                        <%if aux == '1.0' %>
+                          <% aux4 = aux2 /aux3  %>
+                          <% pa = 200 * aux4 %>
+                          <%if pa > 100 %>
+                            <% pa = 100 %>
+                          <%elsif %>
+                            <% pa=pa %>
+                          <%end%>
+                        <%elsif %>
+                          <%pa=0%>
+                        <%end%>
+                <%elsif resultado.question.subcat.nombre == 'CU6. Programa de desarrollo profesional en sustentabilidad'%>
+                      <% if resultado.question.indicador == 'CU6.1'%>
+                            <%  aux = resultado.respuesta %>
+                      <%elsif resultado.question.indicador == 'CU6.2'%>
+                            <%aux2 = resultado.respuesta.to_f%>
+                      <%end%>
+                      <%if aux == '1.0' %>
+                          <% aux4 = aux2 /di20.to_f  %>
+                          <% pj = 1000 * aux4 %>
+                          <%if pj > 100 %>
+                             <% pj = 100 %>
+                          <%elsif %>
+                            <% pj=pj %>
+                          <%end%>
+                      <%elsif %>
+                          <%pj=0%>
+                      <%end%>
+              <%elsif resultado.question.subcat.nombre == 'CU7. Actividades de difusión y sensibilización'%>
+                  <% aux5 =  resultado.respuesta %>
+                  <% s = s + aux5.to_f %>
+                  <% if s >100 %>
+                      <% s = 100%>
+                  <%elsif %>
+                    <% s = s %>
+                  <%end%>
+
+
+
+        <%end%>
+      <% end %>
+    <% end %>
+
+
+<%gob1b=gob1.round(1)%>
+<%gob1= (gob1*0.24).round(1)%>
+<%gob2b=gob2.round(1)%>
+<%gob2= (gob2*0.14).round(1)%>
+<%gob3b= (gob3).round(1)%>
+<%gob3=(gob3b*0.14).round(1)%>
+<%gob4b=gob4.round(1)%>
+<%gob4=(gob4*0.11).round(1)%>
+<%gob5b=(total + suma + resto + puntaje ).round(1)%>
+<%gob5=(gob5b*0.11).round(1)%>
+<%gob6b=(gob6.round(1))%>
+<%gob6= (gob6*0.26).round(1)%>
+<% gob = (gob1 + gob2 + gob3 + gob4 + gob5 + gob6).round(1) %>
+<%gobt = (gob*0.19).round(1)%>
+<%cu1b=punt.round(1)%>
+<%cu1=(cu1b*0.17).round(1)%>
+<%cu2b=pu.round(1)%>
+<%cu2=(cu2b*0.17).round(1)%>
+<%cu3b=pt.round(1)%>
+<%cu3=(cu3b*0.0725).round(1)%>
+<%cu4b=pe.round(1)%>
+<%cu4=(cu4b*0.0725).round(1)%>
+<%cu5b=pa.round(1)%>
+<%cu5=(cu5b*0.0725).round(1)%>
+<%cu6b=pj.round(1)%>
+<%cu6=(cu6b*0.0725).round(1)%>
+<%cu7b=s.round(1)%>
+<%cu7=(cu7b*0.37).round(1)%>
+<%cu =(cu1 + cu2 + cu3 + cu4 + cu5 + cu6 + cu7).round(1) %>
+<%cut = (cu * 0.22 ).round(1)%>
+<%global = puntaje %>
+
+
+<%= form.hidden_field 'global',:value => global %>
+<%= form.hidden_field 'gobpon',:value => gob%>
+<%= form.hidden_field 'gobbru',:value => gobt %>
+<%= form.hidden_field 'gob1pon',:value => gob1%>
+<%= form.hidden_field 'gob1bru',:value => gob1b%>
+<%= form.hidden_field 'gob2pon',:value => gob2%>
+<%= form.hidden_field 'gob2bru',:value => gob2b%>
+<%= form.hidden_field 'gob3pon',:value => gob3%>
+<%= form.hidden_field 'gob3bru',:value => gob3b%>
+<%= form.hidden_field 'gob4pon',:value => gob4%>
+<%= form.hidden_field 'gob4bru',:value => gob4b%>
+<%= form.hidden_field 'gob5pon',:value => gob5%>
+<%= form.hidden_field 'gob5bru',:value => gob5b%>
+<%= form.hidden_field 'gob6pon',:value => gob6%>
+<%= form.hidden_field 'gob6bru',:value => gob6b%>
+<%= form.hidden_field 'cu1pon',:value => cu%>
+<%= form.hidden_field 'cu1bru',:value => cut%>
+<%= form.hidden_field 'cu1pon',:value => cu1%>
+<%= form.hidden_field 'cu1bru',:value => cu1b%>
+<%= form.hidden_field 'cu2pon',:value => cu2%>
+<%= form.hidden_field 'cu2bru',:value => cu2b%>
+<%= form.hidden_field 'cu3pon',:value => cu3%>
+<%= form.hidden_field 'cu3bru',:value => cu3b%>
+<%= form.hidden_field 'cu4pon',:value => cu4%>
+<%= form.hidden_field 'cu4bru',:value => cu4b%>
+<%= form.hidden_field 'cu5pon',:value => cu5%>
+<%= form.hidden_field 'cu5bru',:value => cu5b%>
+<%= form.hidden_field 'cu6pon',:value => cu6%>
+<%= form.hidden_field 'cu6bru',:value => cu6b%>
+<%= form.hidden_field 'cu7pon',:value => cu7%>
+<%= form.hidden_field 'cu7bru',:value => cu7b%>
+
+
+<div class="container" style=" font-family: monospace; margin-top: 60px;">
+    <div class="row">
+        <div class="col-12">
+            <div class="card" style="background-color: #fff">
+
+                    <div class="row pb-5 p-5" style="font-size: 12pt">
+                        <div class="col-md-12">
+
+                          <p>
+                            <img src="<%= asset_path 'red.jpg'%>" width="300" height="100" alt="">
+                          </br>
+                          </br>
+                          <div class="col-md-11 text-center" >
+                              <p class="font-weight-bold mb-1" style="font-size: 18pt; font-family: monospace;"> RESIES "REPORTE Y EVALUACIÓN DE LA SUSTENTABILIDAD DE INSTITUCIONES DE EDUCACIÓN SUPERIOR"</p>
+                          </div>
+                          </p>
+                            </br></br> </br></br>
+                          <p>
+                          </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" >
+                  <div class="row pb-5 p-5" style="font-size: 12pt">
+                      &nbsp;&nbsp;&nbsp;<div class="col-md-2" style="background-color: 	#DCDCDC">
+                      </br><p class="font-weight-bold mb-1" style="font-size: 15pt; font-family: monospace;">Resultado Global</p></br>
+                      <p class="font-weight-bold mb-1" style="font-size: 10pt; font-family: monospace;">Sobre un total de 100 puntos la institución obtiene:</p> </br>
+                      <p class="col-md-11 text-center" style="font-size: 25pt; font-family: monospace;"> <%= global %></p>
+                    </div>&nbsp;&nbsp;&nbsp;
+
+                      <div class="col-md-4" style="background-color: 	#FFF">
+                        <div class="col-md-12 text-center">
+                        </br></br>
+                            <table class="table text-center" style="font-size: 10pt">
+                                <thead>
+                                    <tr style="background-color: #FFF">
+                                        <th class="border-0 text-uppercase small font-weight-bold"></th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Peso</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje bruto</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje ponderado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                      <tr>
+                                           <td class="font-weight-bold mb-1 text-center" style="font-size: 8pt; font-family: monospace; background-color: #6495ED">Gobernanza y Seguimiento</td>
+                                           <td style="background-color: #fff">0.19</td>
+                                           <td style="background-color: #fff"><%= gob %></td>
+                                           <td style="background-color: #fff"><%= gobt %></td>
+                                      </tr>
+                                      <tr>
+                                           <td class="font-weight-bold mb-1 text-center" style="font-size: 8pt; font-family: monospace; background-color: #DAA520">Cultura sustentable</td>
+                                           <td style="background-color: #fff">0.22</td>
+                                           <td style="background-color: #fff"><%=cu%></td>
+                                           <td style="background-color: #fff"><%=cut%></td>
+                                      </tr>
+                                      <tr>
+                                           <td class="font-weight-bold mb-1 text-center" style="font-size: 8pt; font-family: monospace; background-color: #BA55D3">Academia</td>
+                                           <td style="background-color: #fff">0.2</td>
+                                           <td style="background-color: #fff"></td>
+                                           <td style="background-color: #fff"></td>
+                                      </tr>
+                                      <tr>
+                                           <td class="font-weight-bold mb-1 text-center" style="font-size: 8pt; font-family: monospace; background-color: #9ACD32">Gestión de campus</td>
+                                           <td style="background-color: #fff">0.2</td>
+                                           <td style="background-color: #fff"></td>
+                                           <td style="background-color: #fff"></td>
+                                      </tr>
+                                      <tr>
+                                           <td class="font-weight-bold mb-1 text-center" style="font-size: 8pt; font-family: monospace; background-color: 	#87CEEB">Responsabilidad social</td>
+                                           <td style="background-color: #fff">0.19</td>
+                                           <td style="background-color: #fff"></td>
+                                           <td style="background-color: #fff"></td>
+                                      </tr>
+                                </tbody>
+                            </table>
+                          </br>
+
+                          </br>
+                        </div>
+                      </div>
+
+                    <div class="col-md-5" style="background-color: 	#FFF">
+                      <section class="details-card">
+                                          <div class="col-md-7">
+                                          </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Bruto</p><br>
+                                             <div class="card-img">
+                                            <%= bar_chart [["Gobernanza", gob],["Cultura", cu ],["Academia",  ],["Campus", ],["Responsabilidad", ]]%>
+                                           </div></div>
+                       </section>
+                      <section class="details-card">
+                                          <div class="col-md-5">
+                                             <div class="card-img">
+                                             </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Ponderado</p><br>
+
+                                                 <%= pie_chart [["Gobernanza", gobt],["Cultura", cut],["", 100-gobt-cut]]%>
+                                           </div></div>
+                       </section>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel-heading" style="background-color:  #80bfa6 ">
+                     <p class="panel-title"  style="font-size: 25pt; font-family: monospace;" >Resultados por Categoría </p>
+                </div>
+
+                <div class="card" style="background-color:  #d0dffa">
+                </br><div class="panel-heading">
+                       <p class="font-weight-bold mb-2"  style="font-size: 18pt; font-family: monospace;" >Gobernanza y Seguimiento </p>
+                  </div>
+                  <div class="row pb-5 p-5" style="font-size: 12pt">
+                      <div class="col-md-6" >
+                        <div class="col-md-12 text-center">
+                        </br></br>
+                            <table class="table text-center">
+                                    <tr style="font-size: 12pt; ">
+                                        <th class="border-0 text-uppercase small font-weight-bold">Subcategoría</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">ID</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Indicador</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Peso</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje bruto</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje ponderado</th>
+                                    </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td>Participación</td>
+                                           <td  style="background-color: #000d80 ;color: #fff">GOB1</td>
+                                           <td>Participación de grupos de interés</td>
+                                           <td>0.24</td>
+                                           <td><%= gob1b%></td>
+                                           <td><%= gob1%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; " >
+                                           <td rowspan="2" >Planificación y Estrategía</td>
+                                           <td  style="background-color:  #263193 ;color: #fff">GOB2</td>
+                                           <td>Compromiso institucional</td>
+                                           <td>0.14</td>
+                                           <td><%= gob2b%></td>
+                                           <td><%= gob2%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style=" background-color: #404aa0 ;color: #fff">GOB3</td>
+                                           <td>Plan/estrategia de Sustentabilidad</td>
+                                           <td>0.14</td>
+                                           <td><%= gob3b%></td>
+                                           <td><%= gob3%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; " >
+                                           <td rowspan="2" >Reportabilidad y Transparencia</td>
+                                           <td  style=" background-color:  #666eb3 ;color: #fff">GOB4</td>
+                                           <td>Reportabilidad y transparencia</td>
+                                           <td>0.11</td>
+                                           <td><%= gob4b%></td>
+                                           <td><%= gob4%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style=" background-color: #a6aad3 ;color: #fff">GOB5</td>
+                                           <td>Cambio climático</td>
+                                           <td>0.11</td>
+                                           <td><%= gob5b%></td>
+                                           <td><%= gob5%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td >Coordinación</td>
+                                           <td  style="background-color:#8c92c6 ;color: #fff">GOB6</td>
+                                           <td>Coordinación sustentabilidad</td>
+                                           <td>0.26</td>
+                                           <td><%= gob6b%></td>
+                                           <td><%= gob6%></td>
+                                      </tr>
+                                      <tr style="font-size: 15pt; ">
+
+                                           <td colspan="3" class="font-weight-bold mb-2" >Resultado Categoría</td>
+                                           <td colspan="3" class="font-weight-bold mb-2" ><%=gob%></td>
+                                      </tr>
+                            </table>
+                          </br>
+
+                          </br>
+                        </div>
+                      </div>
+
+                    <div class="col-md-6">
+                      <section class="details-card">
+                                          <div class="col-md-7">
+                                            <div class="card-img">
+                                            </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Bruto</p><br>
+                                                 <%= bar_chart [["Gob 1", gob1b] ,["Gob 2", gob2b] ,["Gob 3", gob3b] ,["Gob 4", gob4b] ,["Gob 5", gob5b] ,["Gob 6", gob6b]]%>
+                                           </div></div>
+                       </section>
+                      <section class="details-card">
+                                          <div class="col-md-5">
+                                             <div class="card-img">
+                                             </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Ponderado</p><br>
+                                                 <%= pie_chart [["Gob 1", gob1] ,["Gob 2", gob2] ,["Gob 3", gob3] ,["Gob 4", gob4] ,["Gob 5", gob5] ,["Gob 6", gob6] ,["", 100-gob1]]%>
+                                           </div></div>
+                       </section>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card" style="background-color:  #ffd18c">
+                </br><div class="panel-heading">
+                       <p class="font-weight-bold mb-2"  style="font-size: 18pt; font-family: monospace;" >Cultura Sustentable </p>
+                  </div>
+                  <div class="row pb-5 p-5" style="font-size: 12pt">
+                      <div class="col-md-7" >
+                        <div class="col-md-12 text-center">
+                        </br></br>
+                            <table class="table text-center">
+                                <thead>
+                                    <tr style="font-size: 12pt; ">
+                                        <th class="border-0 text-uppercase small font-weight-bold">Subcategoría</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">ID</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Indicador</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Peso</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje bruto</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje ponderado</th>
+                                  </thead>
+                                  <tbody>
+                                    </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td rowspan="2" >Estudiantes</td>
+                                           <td  style="background-color:  #800000 ;color: #fff">CU1</td>
+                                           <td>Estudiantes promotores de la sustentabilidad</td>
+                                           <td>0.17</td>
+                                           <td><%=cu1b%></td>
+                                           <td><%=cu1%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; " >
+                                           <td  style="background-color:  #b31400 ;color: #fff">CU2</td>
+                                           <td>Inducción a la sustentabilidad para estudiantes</td>
+                                           <td>0.17</td>
+                                           <td><%=cu2b%></td>
+                                           <td><%=cu2%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                        <td rowspan="4" >Funcionarios</td>
+                                           <td  style=" background-color: #6e3800;color: #fff">CU3</td>
+                                           <td>Funcionarios promotores de la sustentabilidad</td>
+                                           <td>0.07</td>
+                                           <td><%= cu3b%></td>
+                                           <td><%= cu3%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; " >
+                                           <td  style=" background-color:  #945200 ;color: #fff">CU4</td>
+                                           <td>Inducción a la sustentabilidad para funcionarios</td>
+                                           <td>0.07</td>
+                                           <td><%=cu4b%></td>
+                                           <td><%=cu4%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style=" background-color:  #f79400;color: #fff">CU5</td>
+                                           <td>Programa de prácticas sustentables para oficinas</td>
+                                           <td>0.07</td>
+                                           <td><%=cu5b%></td>
+                                           <td><%=cu5%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color:#ffb240 ;color: #fff">CU6</td>
+                                           <td>Programas de desarrollo profesional</td>
+                                           <td>0.07</td>
+                                           <td><%= cu6b%></td>
+                                           <td><%=cu6%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td>Sensibilización y Participación </td>
+                                           <td  style="background-color:  #ffc266 ;color: #fff">CU7</td>
+                                           <td>Actividades de difusión y sensibilización</td>
+                                           <td>0.37</td>
+                                           <td><%= cu7b%></td>
+                                           <td><%= cu7 %></td>
+                                      </tr>
+                                      <tr style="font-size: 12pt; ">
+
+                                           <td colspan="3" class="font-weight-bold mb-2" >Resultado Categoría</td>
+                                           <td colspan="3" class="font-weight-bold mb-2" ><%= cu %></td>
+                                      </tr>
+                                </tbody>
+                            </table>
+                          </br>
+
+                          </br>
+                        </div>
+                      </div>
+
+                    <div class="col-md-5">
+                      <section class="details-card">
+                                          <div class="col-md-6">
+                                            <div class="card-img">
+                                            </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Bruto</p><br>
+                                                 <%= bar_chart [["CU1", cu1b],["CU2", cu2b],["CU3", cu3b],["CU4", cu4b],["CU5", cu5b],["CU6", cu6b],["CU7", cu7b]]%>
+                                           </div></div>
+                       </section>
+                      <section class="details-card">
+                                          <div class="col-md-6">
+                                            <div class="card-img">
+                                            </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Ponderado</p><br>
+                                                 <%= pie_chart [["CU1", cu1],["CU2", cu2],["CU3", cu3],["CU3", cu4],["CU5", cu5],["CU6", cu6],["CU7", cu7],["", 100 - cu1-cu2-cu3-cu4-cu5-cu6-cu7]]%>
+                                           </div></div>
+                       </section>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="card" style="background-color:  #dabcf6">
+                </br><div class="panel-heading">
+                       <p class="font-weight-bold mb-2"  style="font-size: 18pt; font-family: monospace;" >Academia  </p>
+                  </div>
+                  <div class="row pb-5 p-5" style="font-size: 12pt">
+                      <div class="col-md-7" >
+                        <div class="col-md-12 text-center">
+                        </br></br>
+                            <table class="table">
+                                <thead>
+                                    <tr style="font-size: 12pt; ">
+                                        <th class="border-0 text-uppercase small font-weight-bold">Subcategoría</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">ID</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Indicador</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Peso</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje bruto</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje ponderado</th>
+                                  </thead>
+                                  <tbody>
+                                    </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td rowspan="5" >Formación</td>
+                                           <td  style="background-color:  #340c5a ;color: #fff">AC1</td>
+                                           <td>Curso mínimo transversal pregrado</td>
+                                           <td>0.11</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; " >
+                                           <td  style="background-color:  #4e1287 ;color: #fff">AC2</td>
+                                           <td>Capacitación de profesores</td>
+                                           <td>0.11</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color:#761cca ;color: #fff">AC3</td>
+                                           <td>Evaluación del conocimientos en sustentabilidad de estudiantes</td>
+                                           <td>0.11</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color: #9c4be7 ;color: #fff">AC4</td>
+                                           <td>Programas de postgrado que incluyen competencias de sustentabilidad</td>
+                                           <td>0.11</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color:	#c18ff0;color: #fff">AC5</td>
+                                           <td>Programas y carreras de pregrado que incluyen competencias de sustentabilidad</td>
+                                           <td>0.11</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                        <td rowspan="3" >Investigación y Transparencia</td>
+                                           <td  style=" background-color: #ffb3d1;color: #fff">AC6</td>
+                                           <td>Apoyo a la investigación en sustentabilidad</td>
+                                           <td>0.15</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; " >
+                                           <td  style=" background-color:   #ff80b3 ;color: #fff">AC7</td>
+                                           <td>Investigación enfocada en sustentabilidad</td>
+                                           <td>0.15</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style=" background-color:  #ff3385;color: #fff">AC8</td>
+                                           <td>Transferencia de conocimientos</td>
+                                           <td>0.15</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+
+
+                                      <tr style="font-size: 12pt; ">
+
+                                           <td colspan="3" class="font-weight-bold mb-2" >Resultado Categoría</td>
+                                           <td colspan="3" class="font-weight-bold mb-2" ></td>
+                                      </tr>
+                                </tbody>
+                            </table>
+                          </br>
+
+                          </br>
+                        </div>
+                      </div>
+
+                    <div class="col-md-5">
+                      <section class="details-card">
+                                          <div class="col-md-6">
+                                             <div class="card-img">
+                                             </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Bruto</p><br>
+                                                 <%= bar_chart []%>
+                                           </div></div>
+                       </section>
+                      <section class="details-card">
+                                          <div class="col-md-6">
+                                             <div class="card-img">
+                                             </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Ponderado</p><br>
+                                                 <%= pie_chart []%>
+                                           </div></div>
+                       </section>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card" style="background-color:   #ccffdd">
+                </br><div class="panel-heading">
+                       <p class="font-weight-bold mb-2"  style="font-size: 18pt; font-family: monospace;" >Gestión de Campus </p>
+                  </div>
+                  <div class="row pb-5 p-5" style="font-size: 12pt">
+                      <div class="col-md-7" >
+                        <div class="col-md-12 text-center">
+                        </br></br>
+                            <table class="table">
+                                <thead>
+                                    <tr style="font-size: 12pt; ">
+                                        <th class="border-0 text-uppercase small font-weight-bold">Subcategoría</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">ID</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Indicador</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Peso</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje bruto</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje ponderado</th>
+                                  </thead>
+                                  <tbody>
+                                    </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td rowspan="2" >Agua</td>
+                                           <td  style="background-color:   #003333 ;color: #fff">GC1</td>
+                                           <td>Huella Hídrica</td>
+                                           <td>0.10</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; " >
+                                           <td  style="background-color:   #006666 ;color: #fff">GC2</td>
+                                           <td>Reducción de consumo de agua</td>
+                                           <td>0.10</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td rowspan="2" >Biodiversidad y áreas verdes</td>
+                                           <td  style="background-color:  #006600 ;color: #fff">GC3</td>
+                                           <td>Biodiversidad</td>
+                                           <td>0.07</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color:#009900 ;color: #fff">GC4</td>
+                                           <td>Manejo sustentable de jardines</td>
+                                           <td>0.07</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td rowspan="2" >Compras</td>
+                                           <td  style="background-color: #665200 ;color: #fff">GC5</td>
+                                           <td>Alimentación</td>
+                                           <td>0.05</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color: 	 #cca300;color: #fff">GC6</td>
+                                           <td>Programa de compras sustentables</td>
+                                           <td>0.05</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td rowspan="2" >Construcción</td>
+                                           <td  style="background-color:  #80ccff;color: #000">GC7</td>
+                                           <td>Diseño y construcción</td>
+                                           <td>0.07</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color:	#b3e0ff;color: #000">GC8</td>
+                                           <td>Operación y mantención</td>
+                                           <td>0.07</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td rowspan="2" >Energía</td>
+                                           <td  style="background-color:  #5cd65c ;color: #000">GC9</td>
+                                           <td>Consumo de energía</td>
+                                           <td>0.09</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color:	#adebad;color: #000">GC10</td>
+                                           <td>Energía Renovable</td>
+                                           <td>0.09</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                        <td rowspan="3" >Residuos</td>
+                                           <td  style=" background-color: 	 #ffd633;color: #000">GC11</td>
+                                           <td>Generación de Residuos</td>
+                                           <td>0.06</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; " >
+                                           <td  style=" background-color:   #ffe680 ;color: #000">GC12</td>
+                                           <td>Recuperación de residuos</td>
+                                           <td>0.06</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style=" background-color:  #fff0b3 ;color: #000">GC13</td>
+                                           <td>Residuos peligrosos</td>
+                                           <td>0.06</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td rowspan="2" >Transporte</td>
+                                           <td  style="background-color:  #99d6ff;color: #000">GC14</td>
+                                           <td>Partición modal medios de transporte</td>
+                                           <td>0.06</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color:	#e6f5ff;color: #000">GC15</td>
+                                           <td>Plan transporte sustentable</td>
+                                           <td>0.06</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+
+
+                                      <tr style="font-size: 12pt; ">
+
+                                           <td colspan="3" class="font-weight-bold mb-2" >Resultado Categoría</td>
+                                           <td colspan="3" class="font-weight-bold mb-2" ></td>
+                                      </tr>
+                                </tbody>
+                            </table>
+                          </br>
+
+                          </br>
+                        </div>
+                      </div>
+
+                    <div class="col-md-5">
+                      <section class="details-card">
+                                          <div class="col-md-6">
+                                            <div class="card-img">
+                                            </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Bruto</p><br>
+                                                 <%= bar_chart []%>
+                                           </div></div>
+                       </section>
+                      <section class="details-card">
+                                          <div class="col-md-6">
+                                            <div class="card-img">
+                                            </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Ponderado</p><br>
+                                                 <%= pie_chart []%>
+                                           </div></div>
+                       </section>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card" style="background-color:  #e6f7ff">
+                </br><div class="panel-heading">
+                       <p class="font-weight-bold mb-2"  style="font-size: 18pt; font-family: monospace;" >Responsabilidad Social  </p>
+                  </div>
+                  <div class="row pb-5 p-5" style="font-size: 12pt">
+                      <div class="col-md-7" >
+                        <div class="col-md-12 text-center">
+                        </br></br>
+                            <table class="table">
+                                <thead>
+                                    <tr style="font-size: 12pt; ">
+                                        <th class="border-0 text-uppercase small font-weight-bold">Subcategoría</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">ID</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Indicador</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Peso</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje bruto</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje ponderado</th>
+                                  </thead>
+                                  <tbody>
+                                    </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td rowspan="3" >Diversidad e inclusión</td>
+                                           <td  style="background-color:  	 #000d33 ;color: #fff">RS1</td>
+                                           <td>Asequibilidad</td>
+                                           <td>0.10</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; " >
+                                           <td  style="background-color:  #001a66 ;color: #fff">RS2</td>
+                                           <td>Política de Inclusión</td>
+                                           <td>0.10</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color:  #002699 ;color: #fff">RS3</td>
+                                           <td>Equidad de Género</td>
+                                           <td>0.10</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td rowspan="3" >Alianzas por la sustentabilidad</td>
+                                           <td  style="background-color: #0033cc ;color: #fff">RS4</td>
+                                           <td>Colaboración</td>
+                                           <td>0.10</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color:	0040ff;color: #fff">RS5</td>
+                                           <td>Participación en políticas públicas</td>
+                                           <td>0.10</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color:	#3366ff	 ;color: #fff">RS6</td>
+                                           <td>Comunidades vecinas</td>
+                                           <td>0.10</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                        <td rowspan="3" >Trabajo justo</td>
+                                           <td  style=" background-color:#4d79ff ;color: #0">RS7</td>
+                                           <td>Compensación del personal</td>
+                                           <td>0.13</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; " >
+                                           <td  style=" background-color: #99b3ff   ;color: #000">RS8</td>
+                                           <td>Satisfacción laboral</td>
+                                           <td>0.13</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style=" background-color: #ccd9ff ;color: #000">RS9</td>
+                                           <td>Sindicalización</td>
+                                           <td>0.13</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+
+
+                                      <tr style="font-size: 12pt; ">
+
+                                           <td colspan="3" class="font-weight-bold mb-2" >Resultado Categoría</td>
+                                           <td colspan="3" class="font-weight-bold mb-2" ></td>
+                                      </tr>
+                                </tbody>
+                            </table>
+                          </br>
+
+                          </br>
+                        </div>
+                      </div>
+
+                    <div class="col-md-5">
+                      <section class="details-card">
+                                          <div class="col-md-6">
+                                             <div class="card-img">
+                                             </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Bruto</p><br>
+                                                 <%= bar_chart []%>
+                                           </div></div>
+                       </section>
+                      <section class="details-card">
+                                          <div class="col-md-6">
+                                             <div class="card-img">
+                                             </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Ponderado</p><br>
+                                                 <%= pie_chart []%>
+                                           </div></div>
+                       </section>
+                    </div>
+                  </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+<% end %>

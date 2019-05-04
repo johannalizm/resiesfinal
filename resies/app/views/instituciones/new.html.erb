@@ -1,0 +1,17 @@
+<%if current_user %>
+<%if current_user.rol == "admin"   %>
+<p style="font-size: 50pt">Nueva Institución</p>
+
+<%= render 'form', institucione: @institucione %>
+<%else%>
+<script>
+    alert("Usted no puede ingresar a esta dirección");
+    window.location.href="/"
+</script>
+<%end%>
+<%else%>
+<script>
+    alert("Usted no puede ingresar a esta dirección");
+    window.location.href="/"
+</script>
+<%end%>

@@ -1,0 +1,11 @@
+<% if @institucione.id == current_user.id %>
+<body>
+
+<%= render 'form', institucione: @institucione %>
+</body>
+<%else%>
+<script>
+    alert("Usted no puede editar otra institucion que no sea la propia");
+    window.location.href=" /"
+</script>
+<%end%>

@@ -1,0 +1,1514 @@
+<body>
+<%= form_with(model: historium, local: true) do |form| %>
+  <% if historium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(historium.errors.count, "error") %> prohibited this historium from being saved:</h2>
+
+      <ul>
+      <% historium.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%= wicked_pdf_stylesheet_link_tag "//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" %>
+<%= wicked_pdf_javascript_include_tag "//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"%>
+<%= wicked_pdf_javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"%>
+<!------ Include the above in your HEAD tag ---------->
+<%= stylesheet_link_tag "formulariomostrar.css" %>
+<%= wicked_pdf_stylesheet_link_tag "formulariomostrar.css" %>
+<%= javascript_include_tag "http://www.google.com/jsapi" %>
+
+
+<%cu1=0.0%>
+<%ide=0%>
+<%fecha=''%>
+<%cu1b =0.0%>
+<%cu2 = 0.0 %>
+<%cu2b = 0.0 %>
+<%cu3 = 0.0 %>
+<%cu3b = 0.0 %>
+<%cu4 = 0.0 %>
+<%cu4b = 0.0 %>
+<%cu5 = 0.0 %>
+<%cu5b = 0.0 %>
+<%cu = 0.0 %>
+<% cut = 0.0 %>
+<%ac1b= 0.0%>
+<%ac1 =0.0%>
+<%ac=0.0%>
+<%ac3b=0.0%>
+<%ac3=0.0%>
+<%ac4b=0.0%>
+<%ac4=0.0%>
+<%ac5b=0.0%>
+<%ac5=0.0%>
+<%ac6b=0.0%>
+<%ac6=0.0%>
+<%ac7b=0.0%>
+<%ac7=0.0%>
+<%ac2b = 0.0%>
+<%ac2 = 0.0%>
+<%ac8b =0.0%>
+<%ac8 =0.0%>
+<%rs1=0.0%>
+<%rs1b=0.0%>
+<%rs =0.0 %>
+<%rst=0.0%>
+<%rs3=0.0%>
+<%rs3b=0.0%>
+<%rs4=0.0%>
+<%rs4b=0.0%>
+<%rs5=0.0%>
+<%rs5b=0.0%>
+<%rs6=0.0%>
+<%rs6b=0.0%>
+<%rs7=0.0%>
+<%rs7b=0.0%>
+<%rs8=0.0%>
+<%rs8b=0.0%>
+<%rs9=0.0%>
+<%rs9b=0.0%>
+<%gc1b=0.0%>
+<%gc1=0.0%>
+<%gc=0%>
+<%gct=0%>
+<%gc3b=0.0%>
+<%gc3=0.0%><%gc7t=0.0%><%gc7b=0.0%><%gc7=0%>
+<%gc10=0.0%><%gc99=0.0%><%gc10r=0.0%><%gcr10=0.0%><%gcs10=0.0%><%gc10s=0.0%><%gc82=0.0%><%gc81=0.0%><%gc81a=0.0%><%gc83=0.0%><%smgc=0.0%><%di25=0.0%>
+<%gcres=0.0%><%gc8b=0.0%><%gc8=0.0%><%gcr10r=0.0%><%gc10b=0.0%><%gc10=0.0%><%gc10h=0.0%><%gc13r=0.0%><%gc13b=0.0%><%gc13=0.0%><%gc141=0.0%><%gc142=0.0%>
+<%gc143=0.0%><%gch91=0.0%><%gch90=0.0%><%gc14b=0.0%><%gc14=0.0%><%gc151=0.0%><%gc15r=0.0%><%gc15s=0.0%><%gc15rs=0.0%><%gc15b=0.0%><%gc15=0%>
+<%gc2b=0.0%><%gc2=0.0%><%gc2rs=0.0%><%gc2s=0.0%><%gch14=0.0%><%gcj11=0.0%><%di33=0.0%><%gcj14=0.0%><%di2=0.0%><%dis=0.0%><%gc29=0.0%><%gc2s=0.0%>
+<%gc2r=0.0%><%gc21=0.0%><%gc41=0.0%><%gc4r=0.0%><%gc4s=0.0%><%gc47=0.0%><%di24=0.0%><%gc47r=0.0%><%gc4f=0.0%><%gc4b=0.0%><%gc4=0.0%>
+<%gc51=0.0%><%gc5r=0.0%><%gc5s=0.0%><%gc5b=0.0%><%gc5=0.0%><%gc61=0.0%><%gc6r=0.0%><%gc6s=0.0%><%gc6b=0.0%><%gc6=0.0%><%gc9b=0.0%><%gc9=0%>
+<%gch73=0.0%><%gcj69=0.0%><%gcj73=0.0%><%di30=0.0%><%gc99=0.0%><%gc9r=0.0%><%gc9s=0.0%><%gc91=0.0%>
+<% gob1=0 %><%gob2=0%><% gob3=0%> <%gob4=0%> <%gob5=0%> <%aux1=0%> <%aux2=0%> <%aux3=0 %><%gob6=0%><% cu1=0 %><%aux4=0 %><%aux5=0%><% aux6=0%>
+<% aux7=0 %><%cu2=0 %><%aux8=0%><% cu3=0%><% cu4=0%><% aux9=0 %><%cu5=0%><% aux10=0%> <%cu6=0%><% aux11=0 %><%cu7=0%>
+<%ac1=0%><% aux13=0%><% aux14=0%><%aux12=0%><%aux16 = 0 %><%aux17 = 0 %><%aux18 = 0 %><%aux19 = 0 %><%aux20 = 0 %><%aux21 = 0 %><%aux22 = 0 %><%aux23 = 0 %><%aux = 0 %><%aux24 = 0 %>
+<%aux25 = 0 %><%aux26 = 0 %><%aux27 = 0 %><%aux28 = 0 %><%aux29 = 0 %><%aux30 = 0 %><%aux31 = 0 %><%aux32 = 0 %><%aux33 = 0 %><%aux34 = 0 %><%aux35 = 0 %><%aux15 = 0 %><%ac1 = 0 %>
+<%ac2 = 0 %><%ac3 = 0 %><%ac4 = 0 %><%ac5 = 0 %><%ac6 = 0 %><%ac7 = 0 %><%ac8 = 0 %><%aux36 = 0 %><%aux37 = 0 %><%aux38 = 0 %><%aux39 = 0 %><%aux40 = 0 %><%aux41 = 0 %><%aux42 = 0 %>
+<%aux43 = 0 %><%aux44 = 0 %><%aux45 = 0 %><%aux46 = 0 %><%aux47 = 0 %><%aux48 = 0 %><%aux49 = 0 %><%aux50 = 0.0 %><%aux51 = 0 %><%aux52 = 0 %><%aux53 = 0 %><%aux54 = 0 %><%aux55 = 0 %><%aux56=0%>
+<%aux57=0%><%gc11b=0%><%gc11p=0%><%aux58=0%><%aux59=0%><%gc12=0%><%gc12b=0%><%aux60=0%><%aux61=0%><%aux62=0%>
+<%aux63=0%><%aux64=0%><%aux65=0%><%aux66=0%><%aux67=0%>
+<% @formularios.each do |formulario|%>
+<% if @historium.id == formulario.id%>
+ <% gob1= formulario.GOB1_1.to_f + formulario.GOB1_2.to_f+ formulario.GOB1_3.to_f + formulario.GOB1_4.to_f + formulario.GOB1_5.to_f + formulario.GOB1_6.to_f + formulario.GOB1_7.to_f + formulario.GOB1_8.to_f %>
+
+ <% gob2= formulario.GOB2_1.to_f + formulario.GOB2_2.to_f+ formulario.GOB2_3.to_f + formulario.GOB2_4.to_f + formulario.GOB2_5.to_f + formulario.GOB2_6.to_f + formulario.GOB2_7.to_f + formulario.GOB2_8.to_f %>
+
+ <% if formulario.GOB3_1 == '1.0' %>
+    <% gob3= formulario.GOB3_2.to_f+ formulario.GOB3_3.to_f + formulario.GOB3_4.to_f + formulario.GOB3_5.to_f + formulario.GOB3_6.to_f + formulario.GOB3_7.to_f + formulario.GOB3_8.to_f + formulario.GOB3_9.to_f + formulario.GOB3_10.to_f + formulario.GOB3_11.to_f + formulario.GOB3_12.to_f + formulario.GOB3_13.to_f + formulario.GOB3_14.to_f + formulario.GOB3_15.to_f%>
+    <% if gob3 > 100 %>
+       <% gob3 = 100 %>
+    <% elsif gob3 <= 100 %>
+       <% gob3 = gob3 %>
+    <%end%>
+       <% elsif %>
+   <% gob3 = 0 %>
+ <%end%>
+
+ <% gob4= ((formulario.GOB4_1).to_f )+ formulario.GOB4_2.to_f+ formulario.GOB4_3.to_f + formulario.GOB4_4.to_f + formulario.GOB4_5.to_f  %>
+
+ <% if formulario.GOB5_1 == '2.0' || formulario.GOB5_1 == '3.0' %>
+   <% aux1=20 %>
+ <%elsif %>
+    <% aux1=0 %>
+ <%end%>
+ <% if formulario.GOB5_1 == '3.0' %>
+   <% if formulario.GOB5_2 == '1.0'%>
+      <% aux2= aux2 + 5 %>
+   <%end%>
+   <%if formulario.GOB5_3 == '1.0' %>
+      <% aux2= aux2 +5 %>
+   <%end%>
+   <%if formulario.GOB5_4 == '1.0' %>
+      <% aux2= aux2 +5 %>
+   <%end%>
+   <%if formulario.GOB5_5 == '1.0' %>
+      <% aux2= aux2 +5 %>
+   <%end%>
+   <%if formulario.GOB5_6 == '1.0' %>
+      <% aux2= aux2 +5 %>
+   <%end%>
+ <% elsif %>
+   <% aux2 = 0 %>
+ <%end%>
+ <% if aux2>10 %>
+   <% aux2 = 10 %>
+ <% elsif %>
+   <% aux2 =aux2 %>
+ <%end%>
+ <% if formulario.GOB5_8.to_f > 0 %>
+    <% if formulario.GOB5_1 == '3.0' %>
+         <% if formulario.DI29 > 0 %>
+       <% aux3 = (50*((formulario.DI29 - formulario.GOB5_8.to_f)/ formulario.DI29))%>
+   <%end%>
+    <%elsif %>
+    <% if formulario.DI_28 > 0 %>
+       <% aux3 = (40*((formulario.DI28 - formulario.GOB5_8.to_f)/ formulario.DI28))%>
+   <%end%>
+    <%end%>
+      <%end%>
+      <% gob5 = aux1 + aux2 + aux3 + formulario.GOB5_7.to_f %>
+
+      <% gob6= formulario.GOB6_1.to_f + formulario.GOB6_2.to_f%>
+
+ <% aux4 =  formulario.CU1_2.to_f + formulario.CU1_3.to_f + formulario.CU1_4.to_f %>
+ <% if formulario.CU1_1 == '1.0' %>
+   <% aux5 = (formulario.DI12).to_f + (formulario.DI13).to_f %>
+   <% if aux5 > 0 %>
+       <% aux6= formulario.CU1_5.to_f / aux5 %>
+   <% elsif %>
+       <% aux6 = 0 %>
+   <%end%>
+   <% if aux4 > 1 %>
+     <% aux7 = 2000 * aux6 * 1 %>
+     <% if aux7 > 100 %>
+   <% cu1 = 100 %>
+     <% elsif %>
+   <% cu1 = aux7 %>
+     <%end%>
+  <%elsif %>
+      <% cu1 = 0 %>
+  <%end%>
+ <%end%>
+
+ <% aux8 = ((formulario.CU2_2).to_f)/((formulario.DI14).to_f + (formulario.DI15).to_f )%>
+ <% if aux8 > ((formulario.DI14).to_f + (formulario.DI15).to_f ) %>
+    <% cu2 = 0 %>
+       <% elsif %>
+    <% if formulario.CU2_1 == '1.0' %>
+   <% cu2 = 100* aux8 %>
+    <% elsif %>
+   <% cu2 = 0 %>
+    <%end%>
+ <%end%>
+
+ <%aux15 = ((formulario.CU3_2).to_f)+((formulario.CU3_3).to_f)+((formulario.CU3_4).to_f) %>
+ 	<% if formulario.CU3_1 == '1.0' %>
+ 	    <% aux16= ((formulario.DI18).to_f) + ((formulario.DI20).to_f)%>
+ 	    <% if aux16 > 0 %>
+ 		<%aux17= ((formulario.CU3_5).to_f)/aux16 %>
+ 	    <% elsif%>
+ 		<%aux17=0%>
+ 	    <%end%>
+ 	    <% if aux15>1%>
+ 		<% aux18= 2000*aux17 *1 %>
+ 		<%if aux18> 100 %>
+ 		    <% cu3= 100%>
+ 		<%elsif%>
+ 		    <%cu3=aux18%>
+ 		<%end%>
+ 	    <%elsif%>
+ 		<% cu3= 0 %>
+ 	    <%end%>
+ 	<%end%>
+
+ <% aux9= ((formulario.CU4_2).to_f)/ ((formulario.DI20).to_f) %>
+ <%if aux9 > 1.0 %>
+     <% cu4 = 100 %>
+ <% elsif %>
+     <% if formulario.CU4_1 == '1.0' %>
+   <% cu4 = 100 * aux9 %>
+     <%elsif %>
+   <% cu4 = 0 %>
+     <%end%>
+ <%end%>
+
+ <% if formulario.CU5_1 == '1.0' %>
+    <% aux10 = ((formulario.CU5_2).to_f)/((formulario.CU5_3).to_f) %>
+    <% cu5 = 200 * aux10 %>
+    <% if cu5 > 100 %>
+   <% cu5 = 100 %>
+    <% elsif %>
+   <% cu5 =  cu5 %>
+    <%end%>
+ <% elsif %>
+    <% cu5 = 0 %>
+ <%end%>
+
+ <% if formulario.CU6_1 == '1.0' %>
+    <% aux11 = ((formulario.CU6_2).to_f)/((formulario.DI20).to_f) %>
+    <% cu6 = 1000 * aux11 %>
+    <% if cu6 > 100 %>
+   <% cu6 = 100 %>
+    <% elsif %>
+   <% cu6 =  cu6 %>
+    <%end%>
+ <% elsif %>
+    <% cu6 = 0 %>
+ <%end%>
+
+ <% cu7 = (formulario.CU7_1).to_f + (formulario.CU7_2).to_f + (formulario.CU7_3).to_f + (formulario.CU7_4).to_f + (formulario.CU7_5).to_f + (formulario.CU7_6).to_f + (formulario.CU7_7).to_f + (formulario.CU7_8).to_f %>
+ <% if aux12 > 100 %>
+    <% cu7 = 100 %>
+ <%elsif %>
+    <% cu7 = cu7 %>
+ <%end%>
+
+ <% aux13 = ((formulario.AC1_3).to_f)/ ((formulario.DI14).to_f) %>
+ <% if formulario.AC1_2 == '1.0' %>
+     <% aux14 = 100 * aux13%>
+ <% elsif formulario.AC1_2 != '1.0' %>
+     <% aux14 = 0 %>
+ <%end%>
+ <% if aux13 > 1.0 %>
+     <% ac1 = ((formulario.AC1_1).to_f) %>
+ <% elsif %>
+     <% ac1 = ((formulario.AC1_1).to_f) + aux14 %>
+ <%end%>
+
+ <% aux19= ((formulario.AC2_2).to_f)+((formulario.AC2_8).to_f)+((formulario.AC2_3).to_f)+((formulario.AC2_4).to_f)+((formulario.AC2_5).to_f)+((formulario.AC2_6).to_f)%>
+	<% if formulario.AC2_1 == '1.0' %>
+	   <% if aux19 >= 2 %>
+		<% aux20 = 1%>
+	   <%elsif%>
+		<% aux20 = 0 %>
+	   <%end%>
+	<%elsif formulario.AC2_1 == '0.0' %>
+	   <% aux20 = 0 %>
+	<%end%>
+	<%aux21 = ((formulario.AC2_8).to_f)/ ((formulario.DI18).to_f)%>
+	<%if aux20 == 1 %>
+	   <% aux22 = aux21 * 1000 %>
+	<%elsif aux20 == 0 %>
+	   <% aux22 = 0 %>
+	<%end%>
+	<% if aux22 > 100 %>
+	   <% aux23 = 100 %>
+	<% elsif aux22 == 0 %>
+	   <% aux23 = 0 %>
+	<% elsif%>
+	   <% aux23 = aux22 %>
+	<%end%>
+	<% if aux19 >=  4 %>
+	   <% cu2 = aux23 %>
+	<%elsif%>
+	   <% cu2 = 0 %>
+	<%end%>
+
+
+	<% aux24 = ((formulario.AC3_1).to_f) / ((formulario.DI14).to_f) %>
+	<% aux25 = ((formulario.AC3_2).to_f) / ((formulario.DI16).to_f) %>
+	<% aux26 = aux24+aux25 %>
+	<% if aux26 < 2.00001 %>
+	   <% ac3 = (aux24*50) + (aux25*50) %>
+	<%elsif%>
+	   <% ac3 = 0 %>
+	<%end%>
+
+	<% aux27 = ((formulario.AC4_1).to_f) / ((formulario.DI17).to_f) %>
+	<% if aux27 < 1.00001 %>
+	   <% ac4 = 100*aux27 %>
+	<%elsif%>
+	   <% ac4 = 0 %>
+	<%end%>
+
+	<% aux28 = ((formulario.AC5_1).to_f) / ((formulario.DI16).to_f) %>
+	<% if aux27 < 1.00001 %>
+	   <% ac5 = 100*aux28 %>
+	<%elsif%>
+	   <% ac5 = 0 %>
+	<%end%>
+
+	<% ac6 = ((formulario.AC6_1).to_f) + ((formulario.AC6_2).to_f) %>
+
+	<% if ((formulario.AC7_3).to_f) > 0.0001 %>
+	     <% aux29 = ((formulario.AC7_2).to_f) / ((formulario.AC7_3).to_f) %>
+	<% elsif %>
+	     <% aux29 = 0 %>
+	<%end%>
+	<% if aux29 > 1 %>
+	    <% aux30 = 0 %>
+	<%elsif aux29 < 1 %>
+	   <% if aux29 > 0.2 %>
+		 <%aux30 = 80 %>
+	   <%elsif%>
+		<% aux30 = 400*aux29 %>
+	   <%end%>
+	<%end%>
+	<% ac7 = aux30 + ((formulario.AC7_1).to_f) %>
+
+	<% ac8 = ((formulario.AC8_1).to_f) + ((formulario.AC8_3).to_f)+ ((formulario.AC8_4).to_f)+ ((formulario.AC8_5).to_f)+ ((formulario.AC8_2).to_f) %>
+
+	<% gc1 = ((formulario.GC1_1).to_f) + ((formulario.GC1_2).to_f)%>
+
+  <% aux31 = ((formulario.DI12).to_f)+((formulario.DI13).to_f)+((formulario.DI18).to_f) + ((formulario.DI20).to_f) %>
+	<% aux35 = ((formulario.GC2_2).to_f)+ ((formulario.GC2_3).to_f)+((formulario.GC2_4).to_f)+((formulario.GC2_5).to_f)+((formulario.GC2_6).to_f)+((formulario.GC2_7).to_f)+((formulario.GC2_8).to_f)%>
+  <%if aux31 == 0 %>
+    <% aux32 = 0 %>
+  <%elsif%>
+    <% aux32 = ((formulario.GC2_9).to_f)/ aux31 %>
+  <%end%>
+  <% if formulario.DI33.to_f == 0%>
+    <% aux33 = 0%>
+  <%elsif%>
+	 <%if ((((formulario.DI33).to_f) - aux32 )/((formulario.DI33).to_f)) == 1 %>
+	    <% aux33 = 0 %>
+	 <%elsif%>
+	    <% if (((formulario.DI33).to_f) - aux32 ) <0 %>
+		      <% aux33 = 0 %>
+	    <% elsif%>
+		      <% aux33 = 300 * ((((formulario.DI33).to_f) - aux32 )/((formulario.DI33).to_f)) %>
+	    <%end%>
+   <%end%>
+	<%end%>
+	<% if aux33 > 60 %>
+	    <% aux34 = 60 %>
+	<%elsif %>
+	    <% if aux33 <= 0 %>
+		<% aux34 = 0 %>
+	    <% elsif %>
+		<% aux34 = aux33 %>
+	    <%end%>
+	<%end%>
+	<% if aux35 > 30 %>
+	    <% aux36 = 30 %>
+	<%elsif%>
+	    <% aux36 = aux35 %>
+	<%end%>
+	<% gc2 = aux36 + aux34 + ((formulario.GC2_1).to_f) %>
+
+  <% aux37 = ((formulario.GC3_2).to_f) + ((formulario.GC3_3).to_f)+ ((formulario.GC3_4).to_f)+ ((formulario.GC3_5).to_f)+ ((formulario.GC3_6).to_f)+ ((formulario.GC3_7).to_f)+ ((formulario.GC3_8).to_f)%>
+  <% if  aux37 > 90 %>
+    <% aux37= 90 %>
+  <%elsif%>
+    <% aux37 = aux37 %>
+  <%end%>
+  <% gc3 = aux37 + ((formulario.GC3_1).to_f) %>
+
+  <% aux38 = ((formulario.GC4_2).to_f) + ((formulario.GC4_3).to_f)+ ((formulario.GC4_4).to_f)+ ((formulario.GC4_5).to_f)+ ((formulario.GC4_6).to_f)+ ((formulario.GC4_8).to_f)%>
+  <% aux39 = ((formulario.GC4_7).to_f)/ ((formulario.DI14).to_f)%>
+  <% if aux39 > 1 %>
+    <% aux39 = 0 %>
+  <%elsif%>
+    <% aux39 = aux39 * aux38 %>
+  <%end%>
+  <% gc4= aux39+((formulario.GC4_1).to_f)%>
+
+  <% aux40 = ((formulario.GC5_2).to_f) + ((formulario.GC5_3).to_f)+ ((formulario.GC5_4).to_f)+ ((formulario.GC5_5).to_f)+ ((formulario.GC5_6).to_f)+((formulario.GC5_7).to_f)+ ((formulario.GC5_8).to_f)+((formulario.GC5_9).to_f)+((formulario.GC5_10).to_f)%>
+    <%if aux40 > 80 %>
+      <% gc5 = 80+ ((formulario.GC5_1).to_f)  %>
+    <%elsif%>
+      <% gc5 = aux40 + ((formulario.GC5_1).to_f)  %>
+    <%end%>
+
+
+
+  <% aux41 = ((formulario.GC6_2).to_f) + ((formulario.GC6_3).to_f)+ ((formulario.GC6_4).to_f)+ ((formulario.GC6_5).to_f)+ ((formulario.GC6_6).to_f)%>
+  <% if formulario.GC6_1 == '1.0'%>
+    <%if aux40 > 100 %>
+      <% gc6 = 100 %>
+    <%elsif%>
+      <% gc6 = aux40 %>
+    <%end%>
+  <%elsif%>
+    <% gc6 = 0 %>
+  <%end%>
+
+  <% aux42 = (((formulario.GC7_1).to_f)*100) + (((formulario.GC7_2).to_f)*70) + (((formulario.GC7_3).to_f)*50)%>
+  <% if formulario.DI26 != '' %>
+    <% if ((formulario.DI26).to_f) > aux42 %>
+        <% gc7= 0 %>
+    <%elsif%>
+      <% gc7 = aux42/((formulario.DI26).to_f)%>
+    <%end%>
+  <%elsif formulario.DI26 == ''%>
+    <% gc7 = 0%>
+  <%end%>
+
+  <% aux43 = ((formulario.GC8_3).to_f) +  ((formulario.GC8_4).to_f)+ ((formulario.GC8_5).to_f)+ ((formulario.GC8_6).to_f)+ ((formulario.GC8_7).to_f)%>
+  <% aux44 =  ((formulario.GC8_2).to_f)*aux33 %>
+  <% aux45 = ((formulario.GC8_1).to_f) + ((formulario.GC8_2).to_f)%>
+  <% if formulario.DI25 != '' || formulario.DI25 != 0 %>
+    <%if aux45 > formulario.DI25.to_f %>
+      <% gc8 = 0%>
+    <%elsif%>
+      <%gc8 = (aux44 + (((formulario.GC8_1).to_f)*100))/formulario.DI25.to_f%>
+    <%end%>
+  <% elsif  formulario.DI25 == '' || formulario.DI25.to_f == 0 %>
+    <% gc8 = 0%>
+  <%end%>
+
+<%if formulario.GC9_9 == ''%>
+  <% gc10=0%>
+<%else%>
+  <% aux62= formulario.GC10_1.to_f / formulario.GC9_9.to_f%>
+    <%if aux62 > 1%>
+    <% gc10=100%>
+  <%else%>
+    <%gc10 = 350*aux62%>
+  <%end%>
+<%end%>
+
+<%if formulario.DI35 == ''%>
+    <%aux57 = 0 %>
+<%elsif %>
+    <%aux57=formulario.DI35.to_f %>
+<%end%>
+<% aux45 = (333-(formulario.GC11_1.to_f/aux31))/aux57%>
+<%if aux45 > 0.3%>
+  <% aux46 = 100%>
+<%else%>
+  <%aux46= aux45*(100/0.3)%>
+<%end%>
+<%if aux46<0%>
+  <%aux47 = 0%>
+<%else%>
+  <%aux47= aux46%>
+<%end%>
+<%if formulario.GC11_1.to_f >0 %>
+  <% aux58 = aux47%>
+<%else%>
+  <%aux58=0%>
+<%end%>
+
+
+<%if formulario.GC11_1 == ''%>
+  <%gc12=0%>
+<%else%>
+  <% aux59= (400*((formulario.GC12_2.to_f)/(formulario.GC11_1.to_f)))%>
+  <% gc12= aux59+formulario.GC12_1.to_f%>
+<%end%>
+
+<%gc13 = ((formulario.GC13_1).to_f)+((formulario.GC13_2).to_f)%>
+
+<% if formulario.GC14_3.to_f == 0%>
+<% aux61=0%>
+<%else%>
+<% aux60= (80*(1-((formulario.GC14_2.to_f)/(formulario.GC14_3.to_f))))%>
+<% gc14= aux60 + formulario.GC14_1.to_f%>
+<% aux61 = formulario.GC14_1.to_f%>
+<%end%>
+  <%aux48 = ((formulario.GC15_2).to_f)+((formulario.GC15_3).to_f)+((formulario.GC15_4).to_f)+((formulario.GC15_5).to_f)+((formulario.GC15_6).to_f)+((formulario.GC15_7).to_f)%>
+  <% if aux48 > 80 %>
+    <% aux49= 80 %>
+  <%elsif %>
+    <% aux49= aux48 %>
+  <%end%>
+  <% gc15 = aux49 + ((formulario.GC15_1).to_f)%>
+
+ <%if formulario.DI14 == ''%>
+    <%aux56 = 0 %>
+<%elsif%>
+    <%aux56 = formulario.DI14.to_f%>
+ <%end%>
+ <%if aux56 == 0 %>
+    <%aux50 = 0%>
+ <% elsif  %>
+    <%aux50 = ((formulario.RS1_2).to_f)/aux56%>
+ <%end%>
+ <% if aux50 == 0 %>
+  <% aux51 = 0%>
+ <%elsif%>
+    <% if aux50 > 0.5 %>
+      <% aux51 = 60 %>
+    <%elsif %>
+      <% aux51 = aux50 *120 %>
+    <%end%>
+  <%end%>
+  <% rs1= aux51 + ((formulario.RS1_1).to_f)%>
+
+<% if formulario.DI21 ==''%>
+  <% rs3=0 %>
+<%elsif formulario.DI21 != ''%>
+  <%if formulario.RS3_1 == ''%>
+    <% aux66 = 0 %>
+  <%else%>
+    <%if formulario.RS3_1.to_f >= (formulario.DI21.to_f*0.5)%>
+      <% aux66 = 50%>
+    <%elsif formulario.RS3_1.to_f <= (formulario.DI21.to_f*0.1)%>
+      <% aux66 = 0%>
+    <%else%>
+      <% aux66 = 100*(formulario.RS3_1.to_f/formulario.DI21.to_f)%>
+    <%end%>
+  <%end%>
+  <% if formulario.RS3_2 == ''%>
+    <%aux67= 0 %>
+  <%else%>
+    <%if formulario.RS3_2.to_f >= (formulario.DI21.to_f*0.5)%>
+      <% aux67 = 50%>
+    <%elsif formulario.RS3_2.to_f <= (formulario.DI21.to_f*0.1)%>
+      <% aux67 = 0%>
+    <%else%>
+      <% aux67 = 100*(formulario.RS2_1.to_f/formulario.DI21.to_f)%>
+    <%end%>
+  <%end%>
+  <%rs3=aux66+aux67%>
+<%end%>
+
+
+  <%aux52=((formulario.RS4_1).to_f)+((formulario.RS4_2).to_f)+((formulario.RS4_3).to_f)+((formulario.RS4_4).to_f)%>
+  <%if aux52 > 60 %>
+    <% rs4 = 60 + ((formulario.RS4_5).to_f) %>
+  <%elsif%>
+    <% rs4 = aux52 + ((formulario.RS4_5).to_f)%>
+  <%end%>
+
+  <% rs5 = ((formulario.RS5_1).to_f)+((formulario.RS5_2).to_f)+((formulario.RS5_3).to_f)%>
+
+  <% rs6 = ((formulario.RS6_1).to_f)+((formulario.RS6_2).to_f)+((formulario.RS6_3).to_f)%>
+
+<% if formulario.RS7_1.to_f > 440609%>
+  <%aux63=50%>
+<%else%>
+  <%aux63=0%>
+<%end%>
+<% if formulario.RS7_2.to_f > 440609%>
+  <%aux64=20%>
+<%else%>
+  <%aux64=0%>
+<%end%>
+<%if formulario.RS7_3 == ''%>
+<% aux65 = 0%>
+<%else%>
+<% if formulario.RS7_3.to_f <= 15%>
+  <%aux65=30%>
+<%elsif formulario.RS7_3.to_f > 15 && formulario.RS7_3.to_f <= 20%>
+  <%aux65= (-6*formulario.RS7_3.to_f)+120%>
+<%else%>
+  <%aux65=0%>
+<%end%>
+<%end%>
+<%rs7=aux63+aux64+aux65%>
+
+  <% aux53 = ((formulario.RS8_1).to_f)+((formulario.RS8_3).to_f)%>
+  <% if ((formulario.RS8_2).to_f)>= 0.6 %>
+    <% aux54= 50%>
+  <%elsif%>
+    <% aux54= 0 %>
+  <%end%>
+  <%rs8=aux53+aux54%>
+
+  <% if formulario.DI20 == ''%>
+    <%  aux55 = 0 %>
+  <% elsif %>
+      <%  aux55= ((formulario.RS9_1).to_f)/((formulario.DI20).to_f) %>
+  <%end%>
+  <% if aux55 < 1 %>
+    <%rs9 = 100 * aux55 %>
+  <%elsif%>
+    <%rs9 = 0 %>
+  <%end%>
+<%fecha= formulario.fecha %>
+<%ide= formulario.user_id%>
+<%end%>
+<%end%>
+<%gob1b=gob1.round(2)%>
+<%gob1= (gob1*0.24).round(2)%>
+<%gob2b=gob2.round(2)%>
+<%gob2= (gob2*0.14).round(2)%>
+<%gob3b= (gob3).round(2)%>
+<%gob3=(gob3b*0.14).round(2)%>
+<%gob4b=gob4.round(2)%>
+<%gob4=(gob4*0.11).round(1)%>
+<%gob5b=gob5.round(1)%>
+<%gob5=(gob5b*0.11).round(2)%>
+<%gob6b=(gob6.round(2))%>
+<%gob6= (gob6*0.26).round(2)%>
+<% gob = (gob1 + gob2 + gob3 + gob4 + gob5 + gob6).round(1) %>
+<%gobt = (gob*0.19).round(2)%>
+<%cu1b=cu1.round(2)%>
+<%cu1=(cu1b*0.17).round(2)%>
+<%cu2b=cu2.round(2)%>
+<%cu2=(cu2b*0.17).round(2)%>
+<%cu3b=cu3.round(2)%>
+<%cu3=(cu3b*0.0725).round(2)%>
+<%cu4b=cu4.round(2)%>
+<%cu4=(cu4b*0.0725).round(2)%>
+<%cu5b=cu5.round(2)%>
+<%cu5=(cu5b*0.0725).round(2)%>
+<%cu6b=cu6.round(2)%>
+<%cu6=(cu6b*0.0725).round(2)%>
+<%cu7b=cu7.round(2)%>
+<%cu7=(cu7b*0.37).round(2)%>
+<%cu =(cu1 + cu2 + cu3 + cu4 + cu5 + cu6 + cu7).round(2) %>
+<%cut = (cu * 0.22 ).round(2)%>
+<%ac1b=ac1.round(2)%>
+<%ac1=(ac1b* (0.54/5)).round(2)%>
+<%ac2b=ac2.round(2)%>
+<%ac2=(ac2b* (0.54/5)).round(2)%>
+<%ac3b=ac3.round(2)%>
+<%ac3=(ac3b* (0.54/5)).round(2)%>
+<%ac4b=ac4.round(2)%>
+<%ac4=(ac4b* (0.54/5)).round(2)%>
+<%ac5b=ac5.round(2)%>
+<%ac5=(ac5b* (0.54/5)).round(2)%>
+<%ac6b=ac6.round(2)%>
+<%ac6=(ac6b* (0.46/3)).round(2)%>
+<%ac7b=ac7.round(2)%>
+<%ac7=(ac7b* (0.46/3)).round(2)%>
+<%ac8b=ac8.round(2)%>
+<%ac8=(ac8b* (0.46/3)).round(2)%>
+<%ac = (ac1+ac2+ac3+ac4+ac5+ac6+ac7+ac8).round(2)%>
+<%act = (ac*0.2).round(2)%>
+<%rs1b=rs1.round(2)%>
+<%rs1=(rs1b* (0.10)).round(2)%>
+<%rs4b=rs4.round(2)%>
+<%rs4=(rs4b* (0.10)).round(2)%>
+<%rs3b=rs3.round(2)%>
+<%rs3=(rs3b* (0.10)).round(2)%>
+<%rs5b=rs5.round(2)%>
+<%rs5=(rs5b* (0.10)).round(2)%>
+<%rs6b=rs6.round(2)%>
+<%rs6=(rs6b* (0.10)).round(2)%>
+<%rs8b=rs8.round(2)%>
+<%rs8=(rs8b* (0.4/3)).round(2)%>
+<%rs7b=rs7.round(2)%>
+<%rs7=(rs7b* (0.4/3)).round(2)%>
+<%rs9b=rs9.round(4)%>
+<%rs9=(rs9b* (0.4/3)).round(2)%>
+<%rs=(rs1+rs3+rs4+rs5+rs6+rs7+rs8+rs9).round(2)%>
+<%rst=(rs * 0.19).round(2)%>
+<%gc1b=gc1.round(2)%>
+<%gc1=(gc1b* (0.19/2)).round(2)%>
+<%gc2b=gc2.round(2)%>
+<%gc2=(gc2b* (0.19/2)).round(2)%>
+<%gc3b=gc3.round(2)%>
+<%gc3=(gc3b* (0.13/2)).round(2)%>
+<%gc4=(gc4b* (0.13/2)).round(2)%>
+<%gc4b=gc4.round(2)%>
+<%gc5=(gc5b* (0.09/2)).round(2)%>
+<%gc5b=gc5.round(2)%>
+<%gc6=(gc6b* (0.09/2)).round(2)%>
+<%gc6b=gc6.round(2)%>
+<%gc7=(gc7b* (0.13/2)).round(2)%>
+<%gc7b=gc7.round(2)%>
+<%gc8=(gc8b* (0.13/2)).round(2)%>
+<%gc8b=gc8.round(2)%>
+<%gc9=(gc9b* (0.17/2)).round(2)%>
+<%gc9b=gc9.round(2)%>
+<%gc10b=gc10.round(2)%>
+<%gc10=(gc10b* (0.17/2)).round(2)%>
+<%gc11b= aux58.round(2)%>
+<%gc11p=(gc11b* (0.17/3)).round(2)%>
+<%gc12b= gc12.round(2)%>
+<%gc12=(gc12b* (0.17/3)).round(2)%>
+<%gc13=(gc13b* (0.17/3)).round(2)%>
+<%gc13b=gc13.round(2)%>
+<%gc14b=gc14.round(2)%>
+<%gc14=(gc14b* (0.12/2)).round(2)%>
+<%gc15=(gc15b* (0.12/2)).round(2)%>
+<%gc15b=gc15.round(2)%>
+<%gc=(gc1+gc2+gc3+gc4+gc5+gc6+gc7+gc8+gc9+gc10+gc11p+gc12+gc13+gc14+gc15).round(2)%>
+<%gct=(gc * 0.2).round(2)%>
+<%global = (gobt+act+cut+rst+gct).round(3)%>
+
+
+<%= form.hidden_field 'historiaid', :value => ide %>
+<%= form.hidden_field 'mesfecha', :value => fecha %>
+<%= form.hidden_field 'global',:value => global %>
+<%= form.hidden_field 'gobpon',:value => gob%>
+<%= form.hidden_field 'gobbru',:value => gobt %>
+<%= form.hidden_field 'gob1pon',:value => gob1%>
+<%= form.hidden_field 'gob1bru',:value => gob1b%>
+<%= form.hidden_field 'gob2pon',:value => gob2%>
+<%= form.hidden_field 'gob2bru',:value => gob2b%>
+<%= form.hidden_field 'gob3pon',:value => gob3%>
+<%= form.hidden_field 'gob3bru',:value => gob3b%>
+<%= form.hidden_field 'gob4pon',:value => gob4%>
+<%= form.hidden_field 'gob4bru',:value => gob4b%>
+<%= form.hidden_field 'gob5pon',:value => gob5%>
+<%= form.hidden_field 'gob5bru',:value => gob5b%>
+<%= form.hidden_field 'gob6pon',:value => gob6%>
+<%= form.hidden_field 'gob6bru',:value => gob6b%>
+<%= form.hidden_field 'cupon',:value => cu%>
+<%= form.hidden_field 'cubru',:value => cut%>
+<%= form.hidden_field 'cu1pon',:value => cu1%>
+<%= form.hidden_field 'cu1bru',:value => cu1b%>
+<%= form.hidden_field 'cu2pon',:value => cu2%>
+<%= form.hidden_field 'cu2bru',:value => cu2b%>
+<%= form.hidden_field 'cu3pon',:value => cu3%>
+<%= form.hidden_field 'cu3bru',:value => cu3b%>
+<%= form.hidden_field 'cu4pon',:value => cu4%>
+<%= form.hidden_field 'cu4bru',:value => cu4b%>
+<%= form.hidden_field 'cu5pon',:value => cu5%>
+<%= form.hidden_field 'cu5bru',:value => cu5b%>
+<%= form.hidden_field 'cu6pon',:value => cu6%>
+<%= form.hidden_field 'cu6bru',:value => cu6b%>
+<%= form.hidden_field 'cu7pon',:value => cu7%>
+<%= form.hidden_field 'cu7bru',:value => cu7b%>
+<%= form.hidden_field 'acpon',:value => ac%>
+<%= form.hidden_field 'acbru',:value => act%>
+<%= form.hidden_field 'ac1pon',:value => ac1%>
+<%= form.hidden_field 'ac1bru',:value => ac1b%>
+<%= form.hidden_field 'ac1pon',:value => ac2%>
+<%= form.hidden_field 'ac1bru',:value => ac2b%>
+<%= form.hidden_field 'ac1pon',:value => ac3%>
+<%= form.hidden_field 'ac1bru',:value => ac3b%>
+<%= form.hidden_field 'ac1pon',:value => ac4%>
+<%= form.hidden_field 'ac1bru',:value => ac4b%>
+<%= form.hidden_field 'ac1pon',:value => ac5%>
+<%= form.hidden_field 'ac1bru',:value => ac5b%>
+<%= form.hidden_field 'ac1pon',:value => ac6%>
+<%= form.hidden_field 'ac1bru',:value => ac6b%>
+<%= form.hidden_field 'ac1pon',:value => ac7%>
+<%= form.hidden_field 'ac1bru',:value => ac7b%>
+<%= form.hidden_field 'ac1pon',:value => ac8%>
+<%= form.hidden_field 'ac1bru',:value => ac8b%>
+<%= form.hidden_field 'gcpon',:value => gc%>
+<%= form.hidden_field 'gcbru',:value => gct%>
+<%= form.hidden_field 'gc1pon',:value => gc1%>
+<%= form.hidden_field 'gc1bru',:value => gc1b%>
+<%= form.hidden_field 'gc2pon',:value => gc2%>
+<%= form.hidden_field 'gc2bru',:value => gc2b%>
+<%= form.hidden_field 'gc3pon',:value => gc3%>
+<%= form.hidden_field 'gc3bru',:value => gc3b%>
+<%= form.hidden_field 'gc4pon',:value => gc4%>
+<%= form.hidden_field 'gc4bru',:value => gc4b%>
+<%= form.hidden_field 'gc5pon',:value => gc5%>
+<%= form.hidden_field 'gc5bru',:value => gc5b%>
+<%= form.hidden_field 'gc6pon',:value => gc6%>
+<%= form.hidden_field 'gc6bru',:value => gc6b%>
+<%= form.hidden_field 'gc7pon',:value => gc7%>
+<%= form.hidden_field 'gc7bru',:value => gc7b%>
+<%= form.hidden_field 'gc8pon',:value => gc8%>
+<%= form.hidden_field 'gc8bru',:value => gc8b%>
+<%= form.hidden_field 'gc9pon',:value => gc9%>
+<%= form.hidden_field 'gc9bru',:value => gc9b%>
+<%= form.hidden_field 'gc10pon',:value=> gc10%>
+<%= form.hidden_field 'gc10bru',:value => gc10b%>
+<%= form.hidden_field 'gc11pon',:value => gc11p%>
+<%= form.hidden_field 'gc11bru',:value => gc11b%>
+<%= form.hidden_field 'gc12pon',:value => gc12%>
+<%= form.hidden_field 'gc12bru',:value => gc12b%>
+<%= form.hidden_field 'gc13pon',:value => gc13%>
+<%= form.hidden_field 'gc13bru',:value => gc13b%>
+<%= form.hidden_field 'gc14pon',:value => gc14%>
+<%= form.hidden_field 'gc14bru',:value => gc14b%>
+<%= form.hidden_field 'gc15pon',:value => gc15%>
+<%= form.hidden_field 'gc15bru',:value => gc15b%>
+<%= form.hidden_field 'rspon',:value => rs%>
+<%= form.hidden_field 'rsbru',:value => rst%>
+<%= form.hidden_field 'rs1pon',:value => rs1%>
+<%= form.hidden_field 'rs1bru',:value => rs1b%>
+
+<%= form.hidden_field 'rs3pon',:value => rs3%>
+<%= form.hidden_field 'rs3bru',:value => rs3b%>
+<%= form.hidden_field 'rs4pon',:value => rs4%>
+<%= form.hidden_field 'rs4bru',:value => rs4b%>
+<%= form.hidden_field 'rs5pon',:value => rs5%>
+<%= form.hidden_field 'rs5bru',:value => rs5b%>
+<%= form.hidden_field 'rs6pon',:value => rs6%>
+<%= form.hidden_field 'rs6bru',:value => rs6b%>
+<%= form.hidden_field 'rs7pon',:value => rs7%>
+<%= form.hidden_field 'rs7bru',:value => rs7b%>
+<%= form.hidden_field 'rs8pon',:value => rs8%>
+<%= form.hidden_field 'rs8bru',:value => rs8b%>
+<%= form.hidden_field 'rs9pon',:value => rs9%>
+<%= form.hidden_field 'rs9bru',:value => rs9b%>
+
+
+<div class="container" style=" font-family: monospace; margin-top: 60px;">
+    <div class="row">
+        <div class="col-12">
+            <div class="card" style="background-color: #fff">
+
+                    <div class="row pb-5 p-5" style="font-size: 12pt">
+                        <div class="col-md-12">
+
+
+                            <%= wicked_pdf_image_tag image_url('/assets/red.jpg'), height: '120', width: '320'  %>
+                          </br>
+                          </br>
+                          <div class="col-md-11 text-center" >
+                              <p class="font-weight-bold mb-1" style="font-size: 18pt; font-family: monospace;"> RESIES "REPORTE Y EVALUACION DE LA SUSTENTABILIDAD DE INSTITUCIONES DE EDUCACION SUPERIOR"</p>
+                          </div>
+                          </p>
+                          <p>
+                          </p>
+                        </div>
+                    </div>
+                </div>
+<div class="page-break">
+                <div class="card" >
+                  <div class="row pb-5 p-5" style="font-size: 12pt">
+                      &nbsp;&nbsp;&nbsp;<div class="col-md-2" style="background-color: 	#DCDCDC">
+                      </br><p class="font-weight-bold mb-1" style="font-size: 15pt; font-family: monospace;">Resultado Global</p></br>
+                      <p class="font-weight-bold mb-1" style="font-size: 10pt; font-family: monospace;">Sobre un total de 100 puntos la institución obtiene:</p> </br>
+                      <p class="col-md-11 text-center" style="font-size: 25pt; font-family: monospace;"> <%= global %></p>
+                    </div>&nbsp;&nbsp;&nbsp;
+
+                      <div class="col-md-4" style="background-color: 	#FFF">
+                        <div class="col-md-12 text-center">
+                        </br></br>
+                            <table class="table text-center" style="font-size: 10pt">
+                                <thead>
+                                    <tr style="background-color: #FFF">
+                                        <th class="border-0 text-uppercase small font-weight-bold"></th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Peso</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje bruto</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje ponderado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                      <tr>
+                                           <td class="font-weight-bold mb-1 text-center" style="font-size: 8pt; font-family: monospace; background-color: #6495ED">Gobernanza y Seguimiento</td>
+                                           <td style="background-color: #fff">0.19</td>
+                                           <td style="background-color: #fff"><%= gob %></td>
+                                           <td style="background-color: #fff"><%= gobt %></td>
+                                      </tr>
+                                      <tr>
+                                           <td class="font-weight-bold mb-1 text-center" style="font-size: 8pt; font-family: monospace; background-color: #DAA520">Cultura sustentable</td>
+                                           <td style="background-color: #fff">0.22</td>
+                                           <td style="background-color: #fff"><%=cu%></td>
+                                           <td style="background-color: #fff"><%=cut%></td>
+                                      </tr>
+                                      <tr>
+                                           <td class="font-weight-bold mb-1 text-center" style="font-size: 8pt; font-family: monospace; background-color: #BA55D3">Academia</td>
+                                           <td style="background-color: #fff">0.2</td>
+                                           <td style="background-color: #fff"><%=ac%></td>
+                                           <td style="background-color: #fff"><%=act%></td>
+                                      </tr>
+                                      <tr>
+                                           <td class="font-weight-bold mb-1 text-center" style="font-size: 8pt; font-family: monospace; background-color: #9ACD32">Gestión de campus</td>
+                                           <td style="background-color: #fff">0.2</td>
+                                           <td style="background-color: #fff"><%=gc%></td>
+                                           <td style="background-color: #fff"><%=gct%></td>
+                                      </tr>
+                                      <tr>
+                                           <td class="font-weight-bold mb-1 text-center" style="font-size: 8pt; font-family: monospace; background-color: 	#87CEEB">Responsabilidad social</td>
+                                           <td style="background-color: #fff">0.19</td>
+                                           <td style="background-color: #fff"><%=rs%></td>
+                                           <td style="background-color: #fff"><%=rst%></td>
+                                      </tr>
+                                </tbody>
+                            </table>
+                          </br>
+
+                          </br>
+                        </div>
+                      </div>
+                    <div class="col-md-5" style="background-color: 	#FFF">
+                      <section class="details-card">
+                                          <div class="col-md-7">
+                                          </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Bruto</p><br>
+                                             <div class="card-img">
+                                            <%= bar_chart [["Gobernanza", gob],["Cultura", cu ],["Academia", ac  ],["G Campus", gc ],["Responsabilidad", rs]]%>
+                                           </div></div>
+                       </section>
+                      <section class="details-card">
+                                          <div class="col-md-5">
+                                             <div class="card-img">
+                                             </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Ponderado</p><br>
+
+                                                 <%= pie_chart [["Gobernanza", gobt],["Cultura", cut],["Academia", act],["G Campus",gct],["Responsabilidad", rst],["% Faltante", 100-gobt-cut-act-rst-gct]], donut: true%>
+                                           </div></div>
+                       </section>
+                    </div>
+                  </div>
+
+
+<div class="page-break">
+                <div class="panel-heading" style="background-color:  #fff">
+                     <p class="panel-title"  style="font-size: 25pt; font-family: monospace;" >Resultados por Categoria </p>
+                </div>
+
+                <div class="panel-heading" style="background-color:  #d0dffa">
+                       <p class="font-weight-bold mb-2"  style="font-size: 18pt; font-family: monospace;" >Gobernanza y Seguimiento </p>
+                  </div>
+                  <div class="row pb-5 p-5" style="font-size: 12pt">
+                      <div class="col-md-6" >
+                        <div class="col-md-12 text-center">
+                        </br></br>
+                            <table class="table text-center">
+                                    <tr style="font-size: 12pt; ">
+                                        <th class="border-0 text-uppercase small font-weight-bold">Subcategoria</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">ID</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Indicador</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Peso</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje bruto</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje ponderado</th>
+                                    </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td>Participación</td>
+                                           <td  style="background-color: #000d80 ;color: #fff">GOB1</td>
+                                           <td>Participación de grupos de interés</td>
+                                           <td>0.24</td>
+                                           <td><%= gob1b%></td>
+                                           <td><%= gob1%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; " >
+                                           <td rowspan="2" >Planificación y Estrategía</td>
+                                           <td  style="background-color:  #263193 ;color: #fff">GOB2</td>
+                                           <td>Compromiso institucional</td>
+                                           <td>0.14</td>
+                                           <td><%= gob2b%></td>
+                                           <td><%= gob2%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style=" background-color: #404aa0 ;color: #fff">GOB3</td>
+                                           <td>Plan/estrategia de Sustentabilidad</td>
+                                           <td>0.14</td>
+                                           <td><%= gob3b%></td>
+                                           <td><%= gob3%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; " >
+                                           <td rowspan="2" >Reportabilidad y Transparencia</td>
+                                           <td  style=" background-color:  #666eb3 ;color: #fff">GOB4</td>
+                                           <td>Reportabilidad y transparencia</td>
+                                           <td>0.11</td>
+                                           <td><%= gob4b%></td>
+                                           <td><%= gob4%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style=" background-color: #a6aad3 ;color: #fff">GOB5</td>
+                                           <td>Cambio climático</td>
+                                           <td>0.11</td>
+                                           <td><%= gob5b%></td>
+                                           <td><%= gob5%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td >Coordinación</td>
+                                           <td  style="background-color:#8c92c6 ;color: #fff">GOB6</td>
+                                           <td>Coordinación sustentabilidad</td>
+                                           <td>0.26</td>
+                                           <td><%= gob6b%></td>
+                                           <td><%= gob6%></td>
+                                      </tr>
+                                      <tr style="font-size: 15pt; ">
+
+                                           <td colspan="3" class="font-weight-bold mb-2" >Resultado Categoria</td>
+                                           <td colspan="3" class="font-weight-bold mb-2" ><%=gob%></td>
+                                      </tr>
+                            </table>
+                          </br>
+
+                          </br>
+                        </div>
+                      </div>
+
+                    <div class="col-md-6">
+                      <section class="details-card">
+                                          <div class="col-md-7">
+                                            <div class="card-img">
+                                            </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Bruto</p><br>
+                                                 <%= bar_chart [["Gob 1", gob1b] ,["Gob 2", gob2b] ,["Gob 3", gob3b] ,["Gob 4", gob4b] ,["Gob 5", gob5b] ,["Gob 6", gob6b]]%>
+                                           </div></div>
+                       </section>
+                      <section class="details-card">
+                                          <div class="col-md-5">
+                                             <div class="card-img">
+                                             </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Ponderado</p><br>
+                                                 <%= pie_chart [["Gob 1", gob1] ,["Gob 2", gob2] ,["Gob 3", gob3] ,["Gob 4", gob4] ,["Gob 5", gob5] ,["Gob 6", gob6] ,["% Faltante", 100-gob1]], donut: true%>
+                                           </div></div>
+                       </section>
+                    </div>
+                  </div>
+
+</div>
+<div class="page-break">
+
+                <div class="panel-heading" style="background-color:  #ffd18c">
+                       <p class="font-weight-bold mb-2"  style="font-size: 18pt; font-family: monospace;" >Cultura Sustentable </p>
+                  </div>
+                  <div class="row pb-5 p-5" style="font-size: 12pt">
+                      <div class="col-md-7" >
+                        <div class="col-md-12 text-center">
+                        </br></br>
+                            <table class="table text-center">
+                                <thead>
+                                    <tr style="font-size: 12pt; ">
+                                        <th class="border-0 text-uppercase small font-weight-bold">Subcategoria</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">ID</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Indicador</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Peso</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje bruto</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje ponderado</th>
+                                  </thead>
+                                  <tbody>
+                                    </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td rowspan="2" >Estudiantes</td>
+                                           <td  style="background-color:  #800000 ;color: #fff">CU1</td>
+                                           <td>Estudiantes promotores de la sustentabilidad</td>
+                                           <td>0.17</td>
+                                           <td><%=cu1b%></td>
+                                           <td><%=cu1%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; " >
+                                           <td  style="background-color:  #b31400 ;color: #fff">CU2</td>
+                                           <td>Inducción a la sustentabilidad para estudiantes</td>
+                                           <td>0.17</td>
+                                           <td><%=cu2b%></td>
+                                           <td><%=cu2%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                        <td rowspan="4" >Funcionarios</td>
+                                           <td  style=" background-color: #6e3800;color: #fff">CU3</td>
+                                           <td>Funcionarios promotores de la sustentabilidad</td>
+                                           <td>0.07</td>
+                                           <td><%= cu3b%></td>
+                                           <td><%= cu3%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; " >
+                                           <td  style=" background-color:  #945200 ;color: #fff">CU4</td>
+                                           <td>Inducción a la sustentabilidad para funcionarios</td>
+                                           <td>0.07</td>
+                                           <td><%=cu4b%></td>
+                                           <td><%=cu4%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style=" background-color:  #f79400;color: #fff">CU5</td>
+                                           <td>Programa de prácticas sustentables para oficinas</td>
+                                           <td>0.07</td>
+                                           <td><%=cu5b%></td>
+                                           <td><%=cu5%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color:#ffb240 ;color: #fff">CU6</td>
+                                           <td>Programas de desarrollo profesional</td>
+                                           <td>0.07</td>
+                                           <td><%= cu6b%></td>
+                                           <td><%=cu6%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td>Sensibilización y Participación </td>
+                                           <td  style="background-color:  #ffc266 ;color: #fff">CU7</td>
+                                           <td>Actividades de difusión y sensibilización</td>
+                                           <td>0.37</td>
+                                           <td><%= cu7b%></td>
+                                           <td><%= cu7 %></td>
+                                      </tr>
+                                      <tr style="font-size: 12pt; ">
+
+                                           <td colspan="3" class="font-weight-bold mb-2" >Resultado Categoria</td>
+                                           <td colspan="3" class="font-weight-bold mb-2" ><%= cu %></td>
+                                      </tr>
+                                </tbody>
+                            </table>
+                          </br>
+
+                          </br>
+                        </div>
+                      </div>
+
+                    <div class="col-md-5">
+                      <section class="details-card">
+                                          <div class="col-md-6">
+                                            <div class="card-img">
+                                            </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Bruto</p><br>
+                                                 <%= bar_chart [["CU1", cu1b],["CU2", cu2b],["CU3", cu3b],["CU4", cu4b],["CU5", cu5b],["CU6", cu6b],["CU7", cu7b]]%>
+                                           </div></div>
+                       </section>
+                      <section class="details-card">
+                                          <div class="col-md-6">
+                                            <div class="card-img">
+                                            </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Ponderado</p><br>
+                                                 <%= pie_chart [["CU1", cu1],["CU2", cu2],["CU3", cu3],["CU3", cu4],["CU5", cu5],["CU6", cu6],["CU7", cu7],["% Faltante", 100 - cu1-cu2-cu3-cu4-cu5-cu6-cu7]], donut: true%>
+                                           </div></div>
+                       </section>
+                    </div>
+                  </div>
+
+</div>
+<div class="page-break">
+
+
+                <div class="panel-heading" style="background-color:  #dabcf6">
+                       <p class="font-weight-bold mb-2"  style="font-size: 18pt; font-family: monospace;" >Academia  </p>
+                  </div>
+                  <div class="row pb-5 p-5" style="font-size: 12pt">
+                      <div class="col-md-7" >
+                        <div class="col-md-12 text-center">
+                        </br></br>
+                            <table class="table">
+                                <thead>
+                                    <tr style="font-size: 12pt; ">
+                                        <th class="border-0 text-uppercase small font-weight-bold">Subcategoria</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">ID</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Indicador</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Peso</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje bruto</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje ponderado</th>
+                                  </thead>
+                                  <tbody>
+                                    </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td rowspan="5" >Formación</td>
+                                           <td  style="background-color:  #340c5a ;color: #fff">AC1</td>
+                                           <td>Curso mínimo transversal pregrado</td>
+                                           <td>0.11</td>
+                                           <td><%=ac1b%></td>
+                                           <td><%=ac1%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; " >
+                                           <td  style="background-color:  #4e1287 ;color: #fff">AC2</td>
+                                           <td>Capacitación de profesores</td>
+                                           <td>0.11</td>
+                                           <td><%=ac2b%></td>
+                                           <td><%=ac2%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color:#761cca ;color: #fff">AC3</td>
+                                           <td>Evaluación del conocimientos en sustentabilidad de estudiantes</td>
+                                           <td>0.11</td>
+                                           <td><%=ac3b%></td>
+                                           <td><%=ac3%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color: #9c4be7 ;color: #fff">AC4</td>
+                                           <td>Programas de postgrado que incluyen competencias de sustentabilidad</td>
+                                           <td>0.11</td>
+                                           <td><%=ac4b%></td>
+                                           <td><%=ac4%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color:	#c18ff0;color: #fff">AC5</td>
+                                           <td>Programas y carreras de pregrado que incluyen competencias de sustentabilidad</td>
+                                           <td>0.11</td>
+                                           <td><%=ac5b%></td>
+                                           <td><%=ac5%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                        <td rowspan="3" >Investigación y Transparencia</td>
+                                           <td  style=" background-color: #ffb3d1;color: #fff">AC6</td>
+                                           <td>Apoyo a la investigación en sustentabilidad</td>
+                                           <td>0.15</td>
+                                           <td><%=ac6b%></td>
+                                           <td><%=ac6%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; " >
+                                           <td  style=" background-color:   #ff80b3 ;color: #fff">AC7</td>
+                                           <td>Investigación enfocada en sustentabilidad</td>
+                                           <td>0.15</td>
+                                           <td><%= ac7b%></td>
+                                           <td><%= ac7%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style=" background-color:  #ff3385;color: #fff">AC8</td>
+                                           <td>Transferencia de conocimientos</td>
+                                           <td>0.15</td>
+                                           <td><%= ac8b%></td>
+                                           <td><%= ac8%></td>
+                                      </tr>
+
+
+                                      <tr style="font-size: 12pt; ">
+
+                                           <td colspan="3" class="font-weight-bold mb-2" >Resultado Categoria</td>
+                                           <td colspan="3" class="font-weight-bold mb-2" ><%=ac%></td>
+                                      </tr>
+                                </tbody>
+                            </table>
+                          </br>
+
+                          </br>
+                        </div>
+                      </div>
+
+                    <div class="col-md-5">
+                      <section class="details-card">
+                                          <div class="col-md-6">
+                                             <div class="card-img">
+                                             </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Bruto</p><br>
+                                                 <%= bar_chart [["AC1", ac1b],["AC2", ac2b],["AC3", ac3b],["AC4", ac4b],["AC5", ac5b],["AC6", ac6b],["AC7", ac7b],["AC8", ac8b]]%>
+                                           </div></div>
+                       </section>
+                      <section class="details-card">
+                                          <div class="col-md-6">
+                                             <div class="card-img">
+                                             </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Ponderado</p><br>
+                                                 <%= pie_chart [["AC1", ac1],["AC2", ac2],["AC3", ac3],["AC4", ac4],["AC5", ac5],["AC6", ac6],["AC7", ac7],["AC8", ac8],["% Faltante", 100 - ac1-ac2-ac3-ac4-ac5-ac6-ac7-ac8]], donut: true %>
+                                           </div></div>
+                       </section>
+                    </div>
+                  </div>
+
+              </div>
+              <div class="page-break">
+
+                <div class="panel-heading" style="background-color:   #ccffdd">
+                       <p class="font-weight-bold mb-2"  style="font-size: 18pt; font-family: monospace;" >Gestión de Campus </p>
+                  </div>
+                  <div class="row pb-5 p-5" style="font-size: 12pt">
+                      <div class="col-md-7" >
+                        <div class="col-md-12 text-center">
+                        </br></br>
+                            <table class="table">
+                                <thead>
+                                    <tr style="font-size: 12pt; ">
+                                        <th class="border-0 text-uppercase small font-weight-bold">Subcategoria</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">ID</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Indicador</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Peso</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje bruto</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje ponderado</th>
+                                  </thead>
+                                  <tbody>
+                                    </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td rowspan="2" >Agua</td>
+                                           <td  style="background-color:   #003333 ;color: #fff">GC1</td>
+                                           <td>Huella Hídrica</td>
+                                           <td>0.10</td>
+                                           <td><%=gc1b%></td>
+                                           <td><%=gc1%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; " >
+                                           <td  style="background-color:   #006666 ;color: #fff">GC2</td>
+                                           <td>Reducción de consumo de agua</td>
+                                           <td>0.10</td>
+                                           <td><%=gc2b%></td>
+                                           <td><%=gc2%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td rowspan="2" >Biodiversidad y áreas verdes</td>
+                                           <td  style="background-color:  #006600 ;color: #fff">GC3</td>
+                                           <td>Biodiversidad</td>
+                                           <td>0.07</td>
+                                           <td><%=gc3b%></td>
+                                           <td><%=gc3%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color:#009900 ;color: #fff">GC4</td>
+                                           <td>Manejo sustentable de jardines</td>
+                                           <td>0.07</td>
+                                           <td><%=gc4b%></td>
+                                           <td><%=gc4%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td rowspan="2" >Compras</td>
+                                           <td  style="background-color: #665200 ;color: #fff">GC5</td>
+                                           <td>Alimentación</td>
+                                           <td>0.05</td>
+                                           <td><%=gc5b%></td>
+                                           <td><%=gc5%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color: 	 #cca300;color: #fff">GC6</td>
+                                           <td>Programa de compras sustentables</td>
+                                           <td>0.05</td>
+                                           <td><%=gc6b%></td>
+                                           <td><%=gc6%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td rowspan="2" >Construcción</td>
+                                           <td  style="background-color:  #80ccff;color: #000">GC7</td>
+                                           <td>Diseño y construcción</td>
+                                           <td>0.07</td>
+                                           <td><%=gc7b%></td>
+                                           <td><%=gc7%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color:	#b3e0ff;color: #000">GC8</td>
+                                           <td>Operación y mantención</td>
+                                           <td>0.07</td>
+                                           <td><%=gc8b%></td>
+                                           <td><%=gc8%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td rowspan="2" >Energía</td>
+                                           <td  style="background-color:  #5cd65c ;color: #000">GC9</td>
+                                           <td>Consumo de energía</td>
+                                           <td>0.09</td>
+                                           <td><%=gc9b%></td>
+                                           <td><%=gc9%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color:	#adebad;color: #000">GC10</td>
+                                           <td>Energía Renovable</td>
+                                           <td>0.09</td>
+                                           <td><%=gc10b%></td>
+                                           <td><%=gc10%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                        <td rowspan="3" >Residuos</td>
+                                           <td  style=" background-color: 	 #ffd633;color: #000">GC11</td>
+                                           <td>Generación de Residuos</td>
+                                           <td>0.06</td>
+                                           <td><%=gc11b%></td>
+                                           <td><%=gc11p%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; " >
+                                           <td  style=" background-color:   #ffe680 ;color: #000">GC12</td>
+                                           <td>Recuperación de residuos</td>
+                                           <td>0.06</td>
+                                           <td><%=gc12b%></td>
+                                           <td><%=gc12%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style=" background-color:  #fff0b3 ;color: #000">GC13</td>
+                                           <td>Residuos peligrosos</td>
+                                           <td>0.06</td>
+                                           <td><%=gc13b%></td>
+                                           <td><%=gc13%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td rowspan="2" >Transporte</td>
+                                           <td  style="background-color:  #99d6ff;color: #000">GC14</td>
+                                           <td>Partición modal medios de transporte</td>
+                                           <td>0.06</td>
+                                           <td><%=gc14b%></td>
+                                           <td><%=gc14%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color:	#e6f5ff;color: #000">GC15</td>
+                                           <td>Plan transporte sustentable</td>
+                                           <td>0.06</td>
+                                           <td><%=gc15b%></td>
+                                           <td><%=gc15%></td>
+                                      </tr>
+
+
+                                      <tr style="font-size: 12pt; ">
+
+                                           <td colspan="3" class="font-weight-bold mb-2" >Resultado Categoria</td>
+                                           <td colspan="3" class="font-weight-bold mb-2" ><%=gc%></td>
+                                      </tr>
+                                </tbody>
+                            </table>
+                          </br>
+
+                          </br>
+                        </div>
+                      </div>
+
+                    <div class="col-md-5">
+                      <section class="details-card">
+                                          <div class="col-md-6">
+                                            <div class="card-img">
+                                            </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Bruto</p><br>
+                                                 <%= bar_chart [["GC1",gc1b],["GC2",gc2b],["GC3",gc3b],["GC4",gc4b],["GC5",gc5b],["GC6",gc6b],["GC7",gc7b],["GC8",gc8b],["GC9",gc9b],["GC10",gc10b],["GC11",gc11b],["GC12",gc12b],["GC13",gc13b],["GC14",gc14b],["GC15",gc15b]]%>
+                                           </div></div>
+                       </section>
+                      <section class="details-card">
+                                          <div class="col-md-6">
+                                            <div class="card-img">
+                                            </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Ponderado</p><br>
+                                                 <%= pie_chart [["GC1",gc1],["GC2",gc2],["GC3",gc3],["GC4",gc4],["GC5",gc5],["GC6",gc6],["GC7",gc7],["GC8",gc8],["GC9",gc9],["GC10",gc10],["GC11",gc11p],["GC12",gc12],["GC13",gc13],["GC14",gc14],["GC15",gc15],["% Faltante",(100-gc1-gc2-gc3-gc4-gc5-gc6-gc7-gc8-gc9-gc10-gc11p-gc12-gc13-gc14-gc15)]], donut: true%>
+                                           </div></div>
+                       </section>
+                    </div>
+                  </div>
+
+</div>
+
+                <div class="panel-heading" style="background-color:  #e6f7ff">
+                       <p class="font-weight-bold mb-2"  style="font-size: 18pt; font-family: monospace;" >Responsabilidad Social  </p>
+                  </div>
+                  <div class="row pb-5 p-5" style="font-size: 12pt">
+                      <div class="col-md-7" >
+                        <div class="col-md-12 text-center">
+                        </br></br>
+                            <table class="table">
+                                <thead>
+                                    <tr style="font-size: 12pt; ">
+                                        <th class="border-0 text-uppercase small font-weight-bold">Subcategoria</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">ID</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Indicador</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Peso</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje bruto</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Puntaje ponderado</th>
+                                  </thead>
+                                  <tbody>
+                                    </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td rowspan="3" >Diversidad e inclusión</td>
+                                           <td  style="background-color:  	 #000d33 ;color: #fff">RS1</td>
+                                           <td>Asequibilidad</td>
+                                           <td>0.10</td>
+                                           <td><%=rs1b%></td>
+                                           <td><%=rs1%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; " >
+                                           <td  style="background-color:  #001a66 ;color: #fff">RS2</td>
+                                           <td>Política de Inclusión</td>
+                                           <td>0.10</td>
+                                           <td></td>
+                                           <td></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color:  #002699 ;color: #fff">RS3</td>
+                                           <td>Equidad de Género</td>
+                                           <td>0.10</td>
+                                           <td><%=rs3b%></td>
+                                           <td><%=rs3%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td rowspan="3" >Alianzas por la sustentabilidad</td>
+                                           <td  style="background-color: #0033cc ;color: #fff">RS4</td>
+                                           <td>Colaboración</td>
+                                           <td>0.10</td>
+                                           <td><%=rs4b%></td>
+                                           <td><%=rs4%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color:	0040ff;color: #fff">RS5</td>
+                                           <td>Participación en políticas públicas</td>
+                                           <td>0.10</td>
+                                           <td><%=rs5b%></td>
+                                           <td><%=rs5%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style="background-color:	#3366ff	 ;color: #fff">RS6</td>
+                                           <td>Comunidades vecinas</td>
+                                           <td>0.10</td>
+                                           <td><%=rs6b%></td>
+                                           <td><%=rs6%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                        <td rowspan="3" >Trabajo justo</td>
+                                           <td  style=" background-color:#4d79ff ;color: #0">RS7</td>
+                                           <td>Compensación del personal</td>
+                                           <td>0.13</td>
+                                           <td><%=rs7b%></td>
+                                           <td><%=rs7%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; " >
+                                           <td  style=" background-color: #99b3ff   ;color: #000">RS8</td>
+                                           <td>Satisfacción laboral</td>
+                                           <td>0.13</td>
+                                           <td><%=rs8b%></td>
+                                           <td><%=rs8%></td>
+                                      </tr>
+                                      <tr style="font-size: 8pt; ">
+                                           <td  style=" background-color: #ccd9ff ;color: #000">RS9</td>
+                                           <td>Sindicalización</td>
+                                           <td>0.13</td>
+                                           <td><%=rs9b%></td>
+                                           <td><%=rs9%></td>
+                                      </tr>
+
+
+                                      <tr style="font-size: 12pt; ">
+
+                                           <td colspan="3" class="font-weight-bold mb-2" >Resultado Categoria</td>
+                                           <td colspan="3" class="font-weight-bold mb-2" ><%=rs%></td>
+                                      </tr>
+                                </tbody>
+                            </table>
+                          </br>
+
+                          </br>
+                        </div>
+                      </div>
+
+                    <div class="col-md-5">
+                      <section class="details-card">
+                                          <div class="col-md-6">
+                                             <div class="card-img">
+                                             </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Bruto</p><br>
+                                                 <%= bar_chart [["RS1", rs1b],["RS3", rs3b],["RS4", rs4b],["RS5", rs5b],["RS6",rs6b],["RS7",rs7b],["RS8",rs8b],["RS9",rs9b]]%>
+                                           </div></div>
+                       </section>
+                      <section class="details-card">
+                                          <div class="col-md-6">
+                                             <div class="card-img">
+                                             </br><p class="font-weight-bold mb-1 text-center" style="font-size: 10pt; font-family: monospace;">Puntaje Ponderado</p><br>
+                                                 <%= pie_chart [["RS1", rs1],["RS3", rs3],["RS4",rs4],["RS5",rs5],["RS6",rs6],["RS7",rs7],["RS8",rs8],["RS9",rs9],["% Faltante",(100-rs1-rs3-rs4-rs5-rs6-rs7-rs8-rs9)]], donut: true%>
+                                           </div></div>
+                       </section>
+                    </div>
+                    <button class="btn btn-success  " style="font-size: 15pt;left: 80%; position: relative; " type="submit" >APROBADO</button>
+
+                  </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<% end %>
+</body>

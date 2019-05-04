@@ -1,0 +1,102 @@
+<%if current_user %>
+<%if current_user.rol == "admin"  %>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<%= stylesheet_link_tag "preg.css" %>
+<%= javascript_include_tag "pre", "data-turbolinks-track" => true  %>
+
+
+<%= form_with(model: question, local: true) do |f| %>
+  <% if question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="container" style="padding-top:30px;">
+    <div class="stepwizard" >
+        <div class="stepwizard-row setup-panel" >
+            <div class="stepwizard-step col-xs-6" >
+                <a href="#step-1" type="button" class="btn btn-success btn-circle">1</a>
+                <p><small>Pregunta</small></p>
+            </div>
+            <div class="stepwizard-step col-xs-6">
+                <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                <p><small>Alternativas</small></p>
+            </div>
+        </div>
+    </div>
+        <div class="panel panel-default setup-content" id="step-1">
+            <div class="panel-heading" style="background-color: #E0FFFF">
+                 <h3 class="panel-title">Pregunta</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="control-label">Indicador : </label>
+                    <%= @question.indicador %>
+                    </div>
+                <div class="form-group">
+                    <label class="control-label">Pregunta : </label>
+                    <%= f.text_area :pregunta, id: :question_pregunta,  class:'form-control', placeholder:'Ej: Existen instancias de representatividad para el conjunto de estudiantes elegidas de forma democrática. Estas deben representar a la totalidad de los estudiantes de la institución. ' %>
+                </div>
+
+                <div class="form-group">
+                        <label for="control-label">Categoria : </label>
+                        <%= @question.subcat.cat.nombre%>
+                </div>
+                <div class="form-group">
+                        <label for="control-label">SubCategoria :</label>
+                        <%= @question.subcat.nombre %>
+                </div>
+
+                <div class="form-group">
+                   <label class="control-label"> Tipo Respuesta :</label>
+                    <%= @question.tiporespuesta %>
+                    </div>
+                <button class="btn btn-success  btn-lg nextBtn pull-right" type="button">Next</button>
+            </div>
+
+        </div>
+
+        <div class="panel panel-default setup-content" id="step-4">
+               <div class="panel-heading" style="background-color: #E0FFFF">
+                    <h3 class="panel-title"> Alternativas</h3>
+               </div>
+                <div class="panel-body">
+                  </br> </br>
+                  <%= f.fields_for :alternativas do |alternativa| %>
+
+                    <%= render 'alternativa_fields', f: alternativa %>
+
+                  <%end%>
+                  </br></br></br>
+                 <button class="btn btn-success pull-right" type="submit">Finish!</button>
+             </div>
+         </div>
+        </div>
+    </form>
+</div>
+<%end%>
+<%else%>
+<script>
+    alert("Usted no puede ingresar a esta dirección");
+    window.location.href="/"
+</script>
+<%end%>
+<%else%>
+<script>
+    alert("Usted no puede ingresar a esta dirección");
+    window.location.href="/"
+</script>
+
+
+<%end%>

@@ -1,0 +1,58 @@
+/*By DjelalEddine@gmail.com*/
+
+
+body, html {
+  height: 100%;
+  background-image: url('/assets/f2.jpg');
+
+ top: 0;
+ right: 0;
+ bottom: 0;
+ left: 0;
+ background-size: cover;
+ background-position: 50% 50%;
+ background-repeat:repeat;
+}
+#user .avatar {
+    width:90px;
+	}
+#user .avatar > img{
+	width:90px;
+	height:80px;
+	border-radius:10%;
+	}
+/*Card*/
+#user .panel-thumb{
+margin:5px auto;
+text-align:center;
+	}
+#user .panel-thumb .avatar-card {
+text-align:center;
+height:200px;
+margin:auto;
+overflow:hidden;
+}
+#user .panel-thumb .avatar-card > img{
+	max-width:200px;
+	max-height:200px;
+	}
+
+/* table*/
+#user .panel-table{
+  -webkit-animation-duration:3s;
+          animation-duration:3s;
+}
+
+#user .panel-table .panel-body .table{
+  margin:0px;
+}
+#user .panel-table .panel-body {
+  padding:0px;
+}
+#user .panel-table .panel-body .table-bordered > thead > tr > th{
+  text-align:center;
+}
+#user .panel-table .panel-footer {
+  height:30px;
+  padding:0px;
+}

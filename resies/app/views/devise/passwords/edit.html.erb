@@ -1,0 +1,33 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<%= stylesheet_link_tag "registro.css" %>
+<body>
+<br />
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+  <%= f.hidden_field :reset_password_token %>
+<div class="container" style="padding-top: 100px;">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+         <div class="row myborder">
+             <h4 style=" font-family:'Buenard', serif; padding-top: 30px; color: #72c02c; margin: initial; margin-bottom: 10px; font-size: 30pt; text-align:center;">Cambia tu Contraseña</h4><hr>
+            <div class="input-group margin-bottom-20">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock mycolor"></i></span>
+                <%= f.password_field :password, autocomplete: "new-password", class: 'form-control',placeholder:'Password 6 caracteres minimos' %></div>
+           <div class="input-group margin-bottom-20">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock mycolor"></i></span>
+                <%= f.password_field :password_confirmation, autocomplete: "new-password",  class: 'form-control',placeholder:'Password Confirmation' %></div>
+            <div class="row">
+                <div class="col-md-12" style="padding-top: 30px;">
+                    <button class="btn-u pull-left" type="submit">Cambiar</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+<% end %>
+</body>

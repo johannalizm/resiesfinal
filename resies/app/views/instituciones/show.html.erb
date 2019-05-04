@@ -1,0 +1,101 @@
+<p id="notice"><%= notice %></p>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<%= javascript_include_tag "jr", "data-turbolinks-track" => true  %>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<hr>
+<div class="container bootstrap snippet">
+  <div id="user" class="col-md-12" >
+    <div class="row">
+  		<div class="col-sm-10"><h2>Datos Institucionales </h2></div>
+    </div>
+    <div class="row">
+  		<div class="col-sm-4"><!--left col-->
+      <div class="text-center">
+        <img src="<%= @institucione.avatar.url(:medium)%>"  alt="avatar">
+      </div></hr><br>
+        </div><!--/col-3-->
+    	<div class="col-sm-8">
+          <div class="tab-content">
+                  <form class="form" action="##" method="post" id="registrationForm">
+                      <div class="form-group">
+                          <div class="col-xs-6">
+                              <label ><h4>Nombre Institución</h4></label>
+                              <p><%= @institucione.nombre %></p>
+                          </div>
+                      </div>
+                      <div class="form-group">
+
+                          <div class="col-xs-6">
+                              <label ><h4>Dirección</h4></label>
+                          <p><%= @institucione.direccion %></p>
+                          </div>
+                      </div>
+                      <div class="form-group">
+
+                          <div class="col-xs-6">
+                              <label ><h4>Tipo de Institución</h4></label>
+                              <p><%= @institucione.tipoinstitucione.nombre %><p>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <div class="col-xs-6">
+                             <label ><h4>Sistema de financiamiento</h4></label>
+                             <p><%= @institucione.tiporelacione.nombre %></p>
+                           </div>
+                      </div>
+
+                      <div class="form-group">
+                          <div class="col-xs-6">
+                              <label ><h4>País</h4></label>
+                            <p><%= @institucione.region.paise.nombre %></p>
+                          </div>
+                      </div>
+                      <div class="form-group">
+
+                          <div class="col-xs-6" >
+                              <label><h4>Región: </h4></label>
+                              <p><%= @institucione.region.nombre %></p>
+                          </div>
+                      </div>
+                      <div class="form-group">
+
+                          <div class="col-xs-6">
+                            <label><h4>Codigo Postal</h4></label>
+                              <p><%= @institucione.codigopostal %></p>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                           <div class="col-xs-12">
+                                <td><%= link_to 'Editar', edit_institucione_path(@institucione), :class => "btn btn-success", :style =>"float: left;" %></td>
+
+                            </div>
+                      </div>
+
+              	</form>
+
+        </div><!--/col-9-->
+
+    </div><!--/row-->
+</div>
+</hr>
+</div>
+</div>
+</body>

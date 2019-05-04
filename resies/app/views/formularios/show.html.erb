@@ -1,0 +1,26 @@
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container" style=" font-family: monospace; margin-top: 60px;">
+    <div class="row">
+        <div class="col-12">
+            <div class="card" style="width:100%; height:60%">
+                <div class="card-body p-0" style="background-color: #E0FFFF">
+                    <div class="row p-5" >
+                        <div class="col-md-12 text-center" >
+                            <p class="mb-1" style="font-size: 32pt; margin-top: 50px;font-family: monospace;"> FORMULARIO FINALIZADO </p>
+                        </div>
+                    </div>
+
+<img src="<%= asset_path 'Reporte.png'%>" width="120" height="100" class="rounded mx-auto d-block" alt="Responsive image">
+</br>
+<%= link_to 'DESCARGAR PDF', historium_path(@formulario, :format => :pdf) , :class => "btn btn-lg btn-success", :style=>"font-size: 15pt;left: 30%;  position: relative; "%>
+<%= link_to 'VISUALIZAR', historium_path(@formulario),  :class => "btn btn-lg btn-success", :style=>"font-size: 15pt;left: 40%;  position: relative; "%>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
